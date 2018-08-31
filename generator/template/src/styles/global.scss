@@ -1,0 +1,34 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  background: $--background-color-base;
+  font-family: Roboto, sans-serif, serif, Helvetica Neue, Helvetica,"Open Sans", open-sans, PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: $--color-text-primary;
+  overflow: hidden;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+// LAYOUT
+#app {
+  height: 100%;
+  width: 100%;
+}
