@@ -1,19 +1,31 @@
+const injectImports2Main = require('./pre-main');
 const updateMain = require('./main');
 
 module.exports = (api, opts) => {
   api.extendPackage({
     dependencies: {
       'element-ui': '^2.4.6',
+      'vue-resource': '^1.5.1',
     },
     devDependencies: {
 
     },
   });
 
-  api.render('./template');
+  // update main.js
+  injectImports2Main(api, opts, {});
 
-  api.postProcessFiles(files => {
-    // update main.js
-    updateMain(api, opts, files);
-  });
+  if (api.invoking) {
+    api.postProcessFiles(files => {
+      updateMain(api, opts, files);
+
+      // console.log('files', Object.keys(files));
+      const needDeleteFiles = ['router', 'store'];
+      Object.keys(files).forEach(name => {
+        // if (/^src\/views[/$]/.test(name)) {
+        //   delete files[name]
+        // }
+      });
+    });
+  }
 }
