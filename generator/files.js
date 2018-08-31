@@ -1,21 +1,11 @@
-module.exports = (api, opts = {}, files) => {
-  const file = files['src/main.ts']
-    ? 'src/main.ts'
-    : 'src/main.js';
-  const mainJS = files[file];
+module.exports = (api, opts, files) => {
+  // Update public/index.html
+  const indexHTML = files['public/index.html']
+  if (indexHTML) {
+    let lines = indexHTML.split(/\r?\n/g).reverse()
+    let title = lines.findIndex((line) => line.match(/^\s*<title/))
+    // lines[title] = ""
 
-  if (mainJS) {
-
-    // inject import for registerServiceWorker script into mainJS.js
-    let lines = mainJS.split(/\r?\n/g).reverse();
-    let lastImportIndex = lines.findIndex(line => line.match(/^import/));
-
-    // lines[lastImportIndex] += `\nimport Element from 'element-ui';`;
-    lines[lastImportIndex] += `\n`;
-    lines[lastImportIndex] += `\nVue.use(Element);`;
-
-    files['src/main.js'] = lines.reverse().join('\n');
+    files['public/index.html'] = lines.reverse().join('\n');
   }
-
-  api.render('./template');
 }

@@ -1,5 +1,6 @@
 const injectImports2Main = require('./pre-main');
 const updateMain = require('./main');
+const updateFiles = require('./files');
 
 module.exports = (api, opts) => {
   api.extendPackage({
@@ -13,11 +14,12 @@ module.exports = (api, opts) => {
   });
 
   // update main.js
-  injectImports2Main(api, opts);
+  injectImports2Main(api, opts, {});
 
   if (api.invoking) {
     api.postProcessFiles(files => {
       updateMain(api, opts, files);
+      // updateFiles(api, opts, files);
 
       // console.log('files', Object.keys(files));
       const needDeleteFiles = ['router', 'store'];
