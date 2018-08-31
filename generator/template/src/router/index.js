@@ -21,8 +21,8 @@ export default new Router({
     {
       path: '/',
       name: 'Root',
-      // component: Root,
-      redirect: { name: 'Index2' },
+      component: Root,
+      redirect: { name: 'Index' },
       meta: {},
       children: [
         {
@@ -35,15 +35,6 @@ export default new Router({
           },
         },
       ],
-    },
-    {
-      path: '/index2',
-      name: 'Index2',
-      component: Index,
-      meta: {
-        hasSub: false,
-        auth: [],
-      },
     },
     {
       path: '/403',
