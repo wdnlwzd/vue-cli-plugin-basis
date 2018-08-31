@@ -13,7 +13,7 @@ module.exports = (api, opts) => {
   });
 
   // update main.js
-  injectImports2Main(api, opts, {});
+  injectImports2Main(api, opts);
 
   if (api.invoking) {
     api.postProcessFiles(files => {
