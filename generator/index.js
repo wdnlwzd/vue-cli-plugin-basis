@@ -21,10 +21,8 @@ module.exports = (api, opts) => {
 
       // console.log('files', Object.keys(files));
       const needDeleteFiles = ['router', 'store'];
-      Object.keys(files).forEach(name => {
-        // if (/^src\/views[/$]/.test(name)) {
-        //   delete files[name]
-        // }
+      needDeleteFiles.forEach(name => {
+        delete files[`src/${name}.js`];
       });
     });
   }
