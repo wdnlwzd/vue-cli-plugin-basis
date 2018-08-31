@@ -16,7 +16,7 @@
     "cli",
     "basis",
     "vue-cli 3.x",
-    "vue-cli-plugin"
+    "vue-cli-plugin",
     "plugin"
   ],
   "author": "tianyiming26@gmail.com",
