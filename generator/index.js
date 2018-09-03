@@ -1,4 +1,3 @@
-const injectImports2Main = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 
@@ -13,12 +12,17 @@ module.exports = (api, opts) => {
     },
   });
 
-  // update main.js
-  injectImports2Main(api, opts, {});
+
+  api.onCreateComplete(() => {
+    // update main.js
+    // api.injectImports(api.entryFile, `import Element from 'element-ui';`);
+    updateMain(api, opts);
+  });
+
+  api.render('./template');
 
   if (api.invoking) {
     api.postProcessFiles(files => {
-      updateMain(api, opts, files);
       // updateFiles(api, opts, files);
 
       // console.log('files', Object.keys(files));
