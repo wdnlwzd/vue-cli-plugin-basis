@@ -2,7 +2,7 @@ const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 
-module.exports = (api, opts) => {
+module.exports = (api, opts, rootOptions) => {
   api.render('./template');
 
   api.extendPackage({
@@ -19,7 +19,7 @@ module.exports = (api, opts) => {
   console.log('opts', opts);
   updatePremain(api, opts);
   if (opts.i18n) {
-    require('./i18n')(api, opts);
+    require('./i18n')(api, opts, rootOptions);
   }
 
   api.onCreateComplete(() => {

@@ -29,4 +29,4 @@ Finally, serve your project which will be available at http://localhost:8090
 npm run serve
 ```
 
-If you run into any issues you can hit us up on [issues](https://github.com/vasttian/vue-cli-plugin-ym-basis/issues).
+If you run into any issues you can hit us up on [issues](https://github.com/vasttian/vue-cli-plugin-ym-basis/issues)
