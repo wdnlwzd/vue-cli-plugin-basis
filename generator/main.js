@@ -25,6 +25,8 @@ module.exports = (api, opts = {}) => {
     lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nVue.router = router;`;
     lines[lastImportIndex] += `\nVue.store = store;`;
+    lines[lastImportIndex] += `\n`;
+    lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
     lines.reverse().join('\n');
     return lines;
   });

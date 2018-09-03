@@ -124,7 +124,7 @@ export default {
     switchLang(lang = 'zh') {
       this.currentLang = lang;
       this.$locale.use(lang);
-      localStorage.setItem('XXXX_LANGUAGE', lang);
+      localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);
     },
     logout() {
       this.$auth.logout().then(() => {
