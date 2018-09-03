@@ -2,6 +2,8 @@ const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 
 module.exports = (api, opts) => {
+  api.render('./template');
+
   api.extendPackage({
     dependencies: {
       'element-ui': '^2.4.6',
@@ -13,13 +15,17 @@ module.exports = (api, opts) => {
   });
 
 
+  console.log('opts', opts);
+  // api.injectImports(api.entryFile, `import Element from 'element-ui';`);
+  if (opts.i18n) {
+    require('./i18n')(api, opts);
+  }
+
   api.onCreateComplete(() => {
     // update main.js
-    // api.injectImports(api.entryFile, `import Element from 'element-ui';`);
     updateMain(api, opts);
   });
 
-  api.render('./template');
 
   if (api.invoking) {
     api.postProcessFiles(files => {

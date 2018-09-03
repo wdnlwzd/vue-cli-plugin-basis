@@ -1,21 +1,30 @@
-module.exports = (api, opts = {}, files) => {
-  const file = files['src/main.ts']
-    ? 'src/main.ts'
-    : 'src/main.js';
-  const mainJS = files[file];
+const helpers = require('./tools/helpers');
 
-  if (mainJS) {
+function addAbsoluteImports(api) {
+  helpers.updateFile(api, api.entryFile, lines => {
+    let importIndex = lines.findIndex(line => line.match(/^import Vue/));
 
-    // inject import for registerServiceWorker script into mainJS.js
-    let lines = mainJS.split(/\r?\n/g).reverse();
+    lines.splice(importIndex += 1, 0, `import Element from 'element-ui';`);
+    lines.splice(importIndex += 1, 0, `import 'element-ui/lib/theme-chalk/index.css';`);
+    lines.splice(importIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
+    lines.splice(importIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
+    lines.splice(importIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
+
+    return lines;
+  });
+}
+
+module.exports = (api, opts = {}) => {
+  addAbsoluteImports(api);
+
+  helpers.updateFile(api, api.entryFile, lines => {
+    lines.reverse();
     let lastImportIndex = lines.findIndex(line => line.match(/^import/));
-
-    // lines[lastImportIndex] += `\nimport Element from 'element-ui';`;
-    lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nVue.use(Element);`;
-
-    files['src/main.js'] = lines.reverse().join('\n');
-  }
-
-  api.render('./template');
+    lines[lastImportIndex] += `\n`;
+    lines[lastImportIndex] += `\nVue.router = router;`;
+    lines[lastImportIndex] += `\nVue.store = store;`;
+    lines.reverse().join('\n');
+    return lines;
+  });
 }
