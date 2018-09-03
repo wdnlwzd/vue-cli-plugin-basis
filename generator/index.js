@@ -1,6 +1,6 @@
 const injectImports2Main = require('./pre-main');
 const updateMain = require('./main');
-const updateFiles = require('./files');
+const updateFiles = require('./tools/files');
 
 module.exports = (api, opts) => {
   api.extendPackage({
