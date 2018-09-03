@@ -22,9 +22,14 @@ module.exports = (api, opts) => {
       // updateFiles(api, opts, files);
 
       // console.log('files', Object.keys(files));
-      const needDeleteFiles = ['router', 'store'];
+      const needDeleteFiles = [
+        'router.js',
+        'store.js',
+        'views/About.vue',
+        'views/Home.vue',
+      ];
       needDeleteFiles.forEach(name => {
-        delete files[`src/${name}.js`];
+        delete files[`src/${name}`];
       });
     });
   }
