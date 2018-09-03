@@ -20,6 +20,7 @@ module.exports = (api, opts = {}) => {
   helpers.updateFile(api, api.entryFile, lines => {
     lines.reverse();
     let lastImportIndex = lines.findIndex(line => line.match(/^import/));
+    lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nVue.use(Element);`;
     lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nVue.router = router;`;

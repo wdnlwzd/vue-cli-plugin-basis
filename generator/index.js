@@ -1,3 +1,4 @@
+const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 
@@ -16,7 +17,7 @@ module.exports = (api, opts) => {
 
 
   console.log('opts', opts);
-  // api.injectImports(api.entryFile, `import Element from 'element-ui';`);
+  updatePremain(api, opts);
   if (opts.i18n) {
     require('./i18n')(api, opts);
   }

@@ -2,9 +2,9 @@
 /* eslint-disable max-len  */
 import request from './utils';
 
-const authUrls = {
+// const authUrls = {
 
-};
+// };
 
 const urlPrefix = '/api/common';
 const urls = {

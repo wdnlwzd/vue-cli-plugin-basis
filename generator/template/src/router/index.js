@@ -6,9 +6,9 @@ import Homepage from '@/views/admin/Homepage';
 
 Vue.use(Router);
 
-const Root = Vue.component('temp', {
-  template: '<router-view></router-view>',
-});
+// const Root = Vue.component('temp', {
+//   template: '<router-view></router-view>',
+// });
 
 export default new Router({
   mode: 'history',
