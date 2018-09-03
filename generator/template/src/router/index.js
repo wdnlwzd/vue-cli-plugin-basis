@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/views/auth/Login';
 import Index from '@/views/Index';
+import Homepage from '@/views/admin/Homepage';
 
 Vue.use(Router);
 
@@ -20,19 +21,16 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Root',
-      component: Root,
-      redirect: { name: 'Index' },
+      name: 'Index',
+      component: Index,
+      redirect: { name: 'Homepage' },
       meta: {},
       children: [
         {
-          path: 'index',
-          name: 'Index',
-          component: Index,
-          meta: {
-            hasSub: false,
-            auth: [],
-          },
+          path: '/homepage',
+          name: 'Homepage',
+          component: Homepage,
+          meta: {},
         },
       ],
     },

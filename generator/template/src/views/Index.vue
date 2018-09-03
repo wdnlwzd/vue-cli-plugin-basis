@@ -1,73 +1,138 @@
 <template>
-  <div>
-    <h2>Hello, welcome to come here.</h2>
-    <el-row>
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-        <el-radio-button :label="false">展开</el-radio-button>
-        <el-radio-button :label="true">收起</el-radio-button>
-      </el-radio-group>
+  <el-container>
+    <el-header
+      height="54px"
+      class="flex-box space-btw">
+      <!-- logo -->
+      <router-link
+        :to="{ path: '/' }">
+        <span class="logo">
+          <img src="@/assets/logo.png" alt="">
+        </span>
+      </router-link>
+
+      <!-- menu -->
       <el-menu
-        default-active="1-4-1"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse">
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title">导航一</span>
+        :default-active="activeMenu"
+        mode="horizontal"
+        router>
+        <template v-for="(route, index) in $router.options.routes[1].children">
+          <template
+            v-if="route.meta.hasSub">
+            <el-submenu
+              v-if="roleShow(route)"
+              :index="route.name"
+              :key="index">
+              <template slot="title">{{ route.name }}</template>
+              <el-menu-item
+                v-for="(cRoute, idx) in route.children"
+                :key="idx"
+                :index="cRoute.name"
+                :route="cRoute">
+                <span slot="title">{{ route.name }}</span>
+              </el-menu-item>
+            </el-submenu>
           </template>
-          <el-menu-item-group>
-            <span slot="title">分组一</span>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <span slot="title">选项4</span>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <i class="el-icon-document"></i>
-          <span slot="title">导航三</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
+          <template v-else>
+            <el-menu-item
+              v-if="roleShow(route)"
+              :key="index"
+              :index="route.name"
+              :route="route">
+              <span slot="title">{{ route.name }}</span>
+            </el-menu-item>
+          </template>
+        </template>
       </el-menu>
-    </el-row>
-  </div>
+
+      <!-- avatar -->
+      <div class="flex-box">
+        <el-dropdown>
+          <span class="el-dropdown-link userinfo flex-box">
+            <span class="avatar flex-box">
+              <!-- <img src="../assets/avatar.svg"> -->
+              <i class="icon-avatar"></i>
+            </span>
+            <span>{{ user && user.username }}</span>
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item @click.native="logout">
+              <i class="icon-switch"></i>
+              {{ $t('common.logout') }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <div class="change-lang">
+          <span
+            @click="switchLang('zh')"
+            :class="{ 'active-lang': currentLang === 'zh' }">
+            中文
+          </span> /
+          <span
+            @click="switchLang('en')"
+            :class="{ 'active-lang': currentLang === 'en' }">
+            En
+          </span>
+        </div>
+      </div>
+    </el-header>
+
+    <el-main>
+      <transition name="move" mode="out-in">
+        <router-view ref="index" />
+      </transition>
+    </el-main>
+    <el-footer>
+      © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤ICP备14054704号-4
+    </el-footer>
+  </el-container>
 </template>
 
 <script>
 export default {
+  name: 'Index',
   data() {
     return {
-      isCollapse: true,
+      currentYear: (new Date()).getFullYear(),
+      currentLang: this.$i18n.locale,
     };
   },
+  computed: {
+    activeMenu() {
+      return this.$route.name;
+    },
+    user() {
+      return this.$store.state.users.user || {};
+    },
+  },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+    roleShow(route) {
+      return true;
+      // hack, there is no user when logout
+      // if (!this.user) {
+      //   return false;
+      // }
+
+      // if (route.meta.hidden) {
+      //   return false;
+      // }
+
+      // const auth = route.meta.auth;
+      // return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    switchLang(lang = 'zh') {
+      this.currentLang = lang;
+      this.$locale.use(lang);
+      localStorage.setItem('XXXX_LANGUAGE', lang);
     },
+    logout() {
+      this.$auth.logout().then(() => {
+        this.$router.push({ name: 'Login' });
+      });
+    },
+  },
+  created() {
   },
 };
 </script>
-
-<style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-}
-</style>

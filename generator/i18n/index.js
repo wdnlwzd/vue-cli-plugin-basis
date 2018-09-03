@@ -26,7 +26,7 @@ module.exports = (api, options) => {
       'vue-i18n': '^8.0.0'
     }
   });
-
+  api.injectImports(api.entryFile, `import i18n from './i18n';`);
   api.injectRootOptions(api.entryFile, `i18n`);
   api.onCreateComplete(() => {
     helpers.updateFile(api, api.entryFile, lines => {
