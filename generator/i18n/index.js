@@ -20,8 +20,14 @@ Vue.prototype.$locale = {
 }
 
 module.exports = (api, options) => {
-  api.injectRootOptions(api.entryFile, `i18n`);
   api.render('./template');
+  api.extendPackage({
+    dependencies: {
+      'vue-i18n': '^8.0.0'
+    }
+  });
+
+  api.injectRootOptions(api.entryFile, `i18n`);
   api.onCreateComplete(() => {
     helpers.updateFile(api, api.entryFile, lines => {
       lines.reverse();
