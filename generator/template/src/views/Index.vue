@@ -117,7 +117,7 @@ export default {
         return false;
       }
 
-      const auth = route.meta.auth;
+      const { auth } = route.meta;
       return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
     },
     switchLang(lang = 'zh') {
