@@ -22,9 +22,9 @@ module.exports = (api, opts, files) => {
       let lastImportIndex = lines.findIndex(line => line.match(/^import/));
       lines[lastImportIndex] += `\n`;
       lines[lastImportIndex] += `
-// console.log('process.env.APP_KEY', process.env.APP_KEY);
+// console.log('process.env', process.env);
 Vue.use(auth, {
-  appKey: process.env.APP_KEY,
+  appKey: process.env.VUE_APP_APP_KEY,
   // authRedirect: '/login',
   allowThirdpartyLogin: true,
 

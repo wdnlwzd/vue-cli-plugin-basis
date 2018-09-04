@@ -1,2 +1,2 @@
 VUE_APP_APP_KEY='XXXXXXXXXXXXX'
-HAMLET_URL='http://172.16.24.42:8012'
+VUE_APP_HAMLET_URL='https://hamlet.yimian.com.cn'
