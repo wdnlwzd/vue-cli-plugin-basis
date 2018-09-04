@@ -12,9 +12,11 @@ html, body{
 
 body {
   font-size: 14px;
+  background: #fff;
   font-family: Roboto, sans-serif, serif, Helvetica Neue, Helvetica,"Open Sans", open-sans, PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  color: #183a6f;
   overflow: hidden;
 }
 
@@ -33,7 +35,9 @@ ul, li {
 
 // HEADER
 .el-header {
+  background-color: #065bc9;
   font-weight: 500;
+  border-bottom: 1px solid rgba(6, 34, 76, .2);
 
   .logo {
     margin-right: 60px;
@@ -52,21 +56,25 @@ ul, li {
 
     .el-menu-item {
       border-bottom: 0;
+      color: #91bdf0;
       margin: 0px 20px;
       font-size: 16px;
       font-weight: 600;
 
       &:hover, &:active {
+        color: #237ae0;
         background-color: transparent;
       }
 
       &.is-active {
+        color: #fff;
         background-color: transparent;
       }
     }
   }
 
   .userinfo {
+    color: #91bdf0;
     line-height: 24px;
     cursor: pointer;
 
@@ -74,16 +82,25 @@ ul, li {
       font-size: 20px;
       margin-right: 8px;
     }
+
+    &:hover {
+      color: #fff;
+    }
   }
 
   .change-lang {
     display: block;
     cursor: pointer;
     margin-left: 20px;
+    color: #65a2e9;
 
     span {
-        cursor: pointer;
-        padding: 0 2px;
+      cursor: pointer;
+      padding: 0 2px;
+
+      &.active-lang {
+        color: #d3e4f9;
+      }
     }
   }
 }
@@ -105,13 +122,16 @@ ul, li {
   position: absolute;
   top: 0;
   left: 0;
+  color: #fff;
   width: 100%;
   z-index: 2001;
+  background-color: #065bc9;
 }
 
 .wrapper {
   height: 100%;
   position: relative;
+  background-color: #fff;
   overflow-y: auto;
 }
 
@@ -123,6 +143,7 @@ ul, li {
 
 .el-footer {
   text-align: center;
+  color: gray;
   font-size: 12px;
 }
 
