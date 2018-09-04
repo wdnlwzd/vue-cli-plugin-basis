@@ -3,6 +3,7 @@ const helpers = require('../tools/helpers');
 function addAbsoluteImports(lines) {
   let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
 
+  lines.splice(lastImportIndex += 1, 0, `import auth from 'vue-hamlet';`);
   lines.splice(lastImportIndex += 1, 0, `import { sync } from 'vuex-router-sync';`);
   return lines;
 }
@@ -14,7 +15,6 @@ module.exports = (api, opts, files) => {
       'vuex-router-sync': '^5.0.0',
     }
   });
-  api.injectImports(api.entryFile, `import auth from '@/hamlet';`);
   api.onCreateComplete(() => {
     helpers.updateFile(api, api.entryFile, lines => {
       lines = addAbsoluteImports(lines);

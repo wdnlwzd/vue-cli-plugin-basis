@@ -1,24 +1,22 @@
 const helpers = require('./tools/helpers');
 
-function addAbsoluteImports(api) {
-  helpers.updateFile(api, api.entryFile, lines => {
-    let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
+function addAbsoluteImports(lines) {
+  let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
 
-    lines.splice(lastImportIndex += 1, 0, `import Element from 'element-ui';`);
-    lines.splice(lastImportIndex += 1, 0, `import 'element-ui/lib/theme-chalk/index.css';`);
-    lines.splice(lastImportIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
-    lines.splice(lastImportIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
-    lines.splice(lastImportIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
-    lines.splice(lastImportIndex += 1, 0, `import moment from 'moment';`);
+  lines.splice(lastImportIndex += 1, 0, `import Element from 'element-ui';`);
+  lines.splice(lastImportIndex += 1, 0, `import 'element-ui/lib/theme-chalk/index.css';`);
+  lines.splice(lastImportIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
+  lines.splice(lastImportIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
+  lines.splice(lastImportIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
+  lines.splice(lastImportIndex += 1, 0, `import moment from 'moment';`);
 
-    return lines;
-  });
+  return lines;
 }
 
 module.exports = (api, opts = {}) => {
-  addAbsoluteImports(api);
 
   helpers.updateFile(api, api.entryFile, lines => {
+    lines = addAbsoluteImports(lines);
     lines.reverse();
     let lastImportIndex = lines.findIndex(line => line.match(/^import/));
     lines[lastImportIndex] += `\n`;
