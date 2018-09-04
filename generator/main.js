@@ -30,8 +30,8 @@ module.exports = (api, opts = {}) => {
 
     // prototype
     lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
-    lines[lastImportIndex] += `\nVue.prototype.$moment = moment;
-`;
+    lines[lastImportIndex] += `\nVue.prototype.$moment = moment;`;
+    lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
 
     lines.reverse().join('\n');
     return lines;
