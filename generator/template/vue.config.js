@@ -1,4 +1,5 @@
-const authApi = 'xxx';
+// example
+const authApi = 'http://172.16.24.42:17510/';
 const commonApi = 'xxx';
 
 module.exports = {

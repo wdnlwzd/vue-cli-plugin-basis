@@ -83,9 +83,9 @@
         <router-view ref="index" />
       </transition>
     </el-main>
-    <el-footer>
+    <!-- <el-footer>
       © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤ICP备14054704号-4
-    </el-footer>
+    </el-footer> -->
   </el-container>
 </template>
 

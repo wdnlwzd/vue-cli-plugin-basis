@@ -117,13 +117,14 @@ export default {
         }
       }).catch((res) => {
         console.log('login failed', res);
-        const reason = res.body.reason;
-        const data = res.body.data;
+        const { data } = res.body;
+
         if (!data) {
           this.$message.error(this.$t('common.invalid_password_username'));
           return;
         }
 
+        const { reason } = res.body;
         const maxAttempts = data.login_max_attempts;
         const failedCount = data.login_failed_count;
         const enableLoginLock = data.enable_login_lock;
@@ -137,8 +138,7 @@ export default {
           if (this.$locale.current() === 'en' && remainedCount === 1) {
             this.$message.error('Invalid Username or Password. last login Remained.');
           } else {
-            this.$message.error(this.$t('common.invalid_password_username_number',
-              { number: remainedCount }));
+            this.$message.error(this.$t('common.invalid_password_username_number', { number: remainedCount }));
           }
         } else {
           this.$message.error(this.$t('common.invalid_password_username'));
