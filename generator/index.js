@@ -1,6 +1,7 @@
 const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
+const vueHamlet = require('./tools/vue-hamlet');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template');
@@ -21,6 +22,10 @@ module.exports = (api, opts, rootOptions) => {
   updatePremain(api, opts);
   if (opts.i18n) {
     require('./i18n')(api, opts, rootOptions);
+  }
+
+  if (1 || opts.hamlet) {
+    vueHamlet(api, opts);
   }
 
   api.onCreateComplete(() => {
