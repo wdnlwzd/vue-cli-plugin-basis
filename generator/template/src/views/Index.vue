@@ -103,23 +103,22 @@ export default {
       return this.$route.name;
     },
     user() {
-      return this.$store.state.users.user || {};
+      return this.$store.state.auth ? this.$store.state.auth.user || {} : {};
     },
   },
   methods: {
     roleShow(route) {
-      return true;
       // hack, there is no user when logout
-      // if (!this.user) {
-      //   return false;
-      // }
+      if (!this.user) {
+        return false;
+      }
 
-      // if (route.meta.hidden) {
-      //   return false;
-      // }
+      if (route.meta.hidden) {
+        return false;
+      }
 
-      // const auth = route.meta.auth;
-      // return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
+      const auth = route.meta.auth;
+      return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
     },
     switchLang(lang = 'zh') {
       this.currentLang = lang;
