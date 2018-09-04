@@ -9,6 +9,7 @@ module.exports = (api, opts, rootOptions) => {
     dependencies: {
       'element-ui': '^2.4.6',
       'vue-resource': '^1.5.1',
+      'moment': '^2.22.2',
     },
     devDependencies: {
 

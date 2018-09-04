@@ -9,6 +9,7 @@ function addAbsoluteImports(api) {
     lines.splice(importIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
     lines.splice(importIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
     lines.splice(importIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
+    lines.splice(importIndex += 1, 0, `import moment from 'moment';`);
 
     return lines;
   });
@@ -26,7 +27,12 @@ module.exports = (api, opts = {}) => {
     lines[lastImportIndex] += `\nVue.router = router;`;
     lines[lastImportIndex] += `\nVue.store = store;`;
     lines[lastImportIndex] += `\n`;
+
+    // prototype
     lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
+    lines[lastImportIndex] += `\nVue.prototype.$moment = moment;
+`;
+
     lines.reverse().join('\n');
     return lines;
   });
