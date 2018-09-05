@@ -30,7 +30,7 @@ module.exports = (api, opts, rootOptions) => {
 
   api.onCreateComplete(() => {
     // update main.js
-    updateMain(api, opts);
+    updateMain(api);
 
     // update .eslintrc.js
     updateEslintrc(api);

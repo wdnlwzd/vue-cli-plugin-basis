@@ -13,7 +13,7 @@ function addAbsoluteImports(lines) {
   return lines;
 }
 
-module.exports = (api, opts = {}) => {
+module.exports = (api) => {
 
   helpers.updateFile(api, api.entryFile, lines => {
     lines = addAbsoluteImports(lines);
