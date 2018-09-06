@@ -1,5 +1,15 @@
 const helpers = require('../tools/helpers');
 
+function addAbsoluteImports(lines) {
+  let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
+
+  lines.splice(lastImportIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
+  lines.splice(lastImportIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
+  lines.splice(lastImportIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
+
+  return lines;
+}
+
 function addLocale(rootOptions, lines, lastImportIndex) {
   lines[lastImportIndex] += `\n`;
   lines[lastImportIndex] +=`
@@ -30,6 +40,7 @@ module.exports = (api, options, rootOptions) => {
   api.injectRootOptions(api.entryFile, `i18n`);
   api.onCreateComplete(() => {
     helpers.updateFile(api, api.entryFile, lines => {
+      lines = addAbsoluteImports(lines);
       lines.reverse();
       let lastImportIndex = lines.findIndex(line => line.match(/^import/));
       addLocale(rootOptions, lines, lastImportIndex);

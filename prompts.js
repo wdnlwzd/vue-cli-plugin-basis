@@ -23,7 +23,7 @@ module.exports = [
   },
   {
     type: 'confirm',
-    name: 'Moment',
+    name: 'moment',
     message: `Use moment ? Parse, validate, manipulate, and display dates and times in JavaScript.`
   },
   // {

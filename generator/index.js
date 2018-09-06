@@ -3,7 +3,6 @@ const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 const updateEslintrc = require('./tools/eslintrc');
 const addVueHamlet = require('./utils/vue-hamlet');
-const addMoment = require('./utils/moment');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template');
@@ -21,12 +20,12 @@ module.exports = (api, opts, rootOptions) => {
 
   console.log('opts', opts);
   updatePremain(api, opts);
-  if (opts.i18n) {
+  if (opts.i18n !== 'none') {
     require('./i18n')(api, opts, rootOptions);
   }
 
   if (1 || opts.hamlet) {
-    vueHamlet(api, opts);
+    addVueHamlet(api, opts);
   }
 
   opts.moment && require('./utils/moment')(api);

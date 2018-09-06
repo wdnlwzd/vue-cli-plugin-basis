@@ -5,9 +5,6 @@ function addAbsoluteImports(lines) {
 
   lines.splice(lastImportIndex += 1, 0, `import Element from 'element-ui';`);
   lines.splice(lastImportIndex += 1, 0, `import 'element-ui/lib/theme-chalk/index.css';`);
-  lines.splice(lastImportIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
-  lines.splice(lastImportIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
-  lines.splice(lastImportIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
 
   return lines;
 }
