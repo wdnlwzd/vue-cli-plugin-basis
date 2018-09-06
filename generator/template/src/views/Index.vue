@@ -109,11 +109,7 @@ export default {
   methods: {
     roleShow(route) {
       // hack, there is no user when logout
-      if (!this.user) {
-        return false;
-      }
-
-      if (route.meta.hidden) {
+      if (!this.user || route.meta.hidden) {
         return false;
       }
 

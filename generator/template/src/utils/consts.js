@@ -8,6 +8,3 @@ export const INVALID_ARGUMENT = 'invalid argument';
 export const NOT_FOUND = 'not found';
 export const PROJECT_ALREADY_EXISTS = 'the project already exists';
 export const PROJECT_NOT_EXISTS = 'the project does not exist';
-
-// app key
-export const APP_KEY = 'XXXXXXXXXXXXXXX';

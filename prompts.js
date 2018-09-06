@@ -2,7 +2,7 @@ module.exports = [
   {
     type: 'list',
     name: 'i18n',
-    message: 'ElementUi i18n options',
+    message: 'ElementUI i18n options',
     choices: [
       { name: 'None', value: 'none' },
       { name: 'Standard', value: 'standard' },
