@@ -2,6 +2,7 @@ const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 const vueHamlet = require('./tools/vue-hamlet');
+const updateEslintrc = require('./tools/eslintrc');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template');

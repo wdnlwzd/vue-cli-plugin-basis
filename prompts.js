@@ -8,6 +8,6 @@ module.exports = [
       { name: 'Standard', value: 'standard' },
       { name: 'VueI18n (with i18n cli plugin)', value: 'vuei18n' }
     ],
-    default: 'None',
+    default: 'vuei18n',
   },
 ];
