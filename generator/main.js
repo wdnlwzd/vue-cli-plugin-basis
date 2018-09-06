@@ -8,7 +8,6 @@ function addAbsoluteImports(lines) {
   lines.splice(lastImportIndex += 1, 0, `import locale from 'element-ui/lib/locale';`);
   lines.splice(lastImportIndex += 1, 0, `import zhLang from 'element-ui/lib/locale/lang/zh-CN';`);
   lines.splice(lastImportIndex += 1, 0, `import enLang from 'element-ui/lib/locale/lang/en';`);
-  lines.splice(lastImportIndex += 1, 0, `import moment from 'moment';`);
 
   return lines;
 }
@@ -28,7 +27,6 @@ module.exports = (api) => {
 
     // prototype
     lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
-    lines[lastImportIndex] += `\nVue.prototype.$moment = moment;`;
     lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
 
     lines.reverse().join('\n');

@@ -1,8 +1,9 @@
 const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
-const vueHamlet = require('./tools/vue-hamlet');
 const updateEslintrc = require('./tools/eslintrc');
+const addVueHamlet = require('./utils/vue-hamlet');
+const addMoment = require('./utils/moment');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template');
@@ -11,7 +12,6 @@ module.exports = (api, opts, rootOptions) => {
     dependencies: {
       'element-ui': '^2.4.6',
       'vue-resource': '^1.5.1',
-      'moment': '^2.22.2',
     },
     devDependencies: {
 
@@ -29,6 +29,7 @@ module.exports = (api, opts, rootOptions) => {
     vueHamlet(api, opts);
   }
 
+  opts.moment && require('./utils/moment')(api);
   api.onCreateComplete(() => {
     // update main.js
     updateMain(api);
