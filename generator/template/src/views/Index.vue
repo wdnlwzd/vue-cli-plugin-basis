@@ -122,9 +122,17 @@ export default {
       localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);
     },
     logout() {
+    <%_ if (hamlet) { _%>
       this.$auth.logout().then(() => {
         this.$router.push({ name: 'Login' });
       });
+    <%_ } else {_%>
+      console.log('logout');
+      this.$message({
+        showClose: true,
+        message: 'Ahem: Please add logout function',
+      });
+    <%_ }_%>
     },
   },
   created() {

@@ -2,7 +2,6 @@ const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 const updateEslintrc = require('./tools/eslintrc');
-const addVueHamlet = require('./utils/vue-hamlet');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template');
@@ -24,10 +23,7 @@ module.exports = (api, opts, rootOptions) => {
     require('./i18n')(api, opts, rootOptions);
   }
 
-  if (1 || opts.hamlet) {
-    addVueHamlet(api, opts);
-  }
-
+  opts.hamlet && require('./utils/vue-hamlet')(api, opts);
   opts.moment && require('./utils/moment')(api);
   api.onCreateComplete(() => {
     // update main.js

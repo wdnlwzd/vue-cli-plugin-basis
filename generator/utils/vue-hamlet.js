@@ -8,7 +8,7 @@ function addAbsoluteImports(lines) {
   return lines;
 }
 
-module.exports = (api, opts, files) => {
+module.exports = (api, opts) => {
   api.extendPackage({
     dependencies: {
       'vue-hamlet': 'github:yimian/vue-hamlet#v1.0.2',

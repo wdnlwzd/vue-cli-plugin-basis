@@ -104,6 +104,7 @@ export default {
   },
   methods: {
     login() {
+    <%_ if (hamlet) { _%>
       if (!this.form.password || !this.form.username) {
         return;
       }
@@ -146,6 +147,13 @@ export default {
       }).finally(() => {
         this.loginLoading = false;
       });
+    <%_ } else {_%>
+      console.log('login');
+      this.$message({
+        showClose: true,
+        message: 'Ahem: Please add login function',
+      });
+    <%_ }_%>
     },
     switchLang(lang) {
       this.currentLang = lang;
@@ -153,8 +161,16 @@ export default {
       localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);
     },
     redirectForgotPassword() {
+    <%_ if (hamlet) { _%>
       /* eslint-disable max-len */
       window.location = `${process.env.VUE_APP_HAMLET_URL}/forgot_password?app_key=${process.env.VUE_APP_APP_KEY}&callback_url=${document.location.href}`;
+    <%_ } else {_%>
+      console.log('redirectForgotPassword');
+      this.$message({
+        showClose: true,
+        message: 'Ahem: Please add redirect function',
+      });
+    <%_ }_%>
     },
   },
   created() {

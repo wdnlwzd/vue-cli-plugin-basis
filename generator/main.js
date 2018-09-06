@@ -24,6 +24,9 @@ module.exports = (api) => {
 
     // prototype
     lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
+    // lines[lastImportIndex] += `\nVue.prototype.$message = Message;`;
+    // lines[lastImportIndex] += `\nVue.prototype.$msgbox = MessageBox;`;
+    // lines[lastImportIndex] += `\nVue.prototype.$notify = Notification;`;
     lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
 
     lines.reverse().join('\n');

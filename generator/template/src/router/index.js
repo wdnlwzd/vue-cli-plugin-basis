@@ -39,8 +39,8 @@ export default new Router({
       meta: {
         hidden: true,
       },
-      redirect: { name: 'Index' },
-      // component: Login,
+      // redirect: { name: 'Index' },
+      component: Login,
     },
     {
       path: '*',

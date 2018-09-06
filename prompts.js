@@ -11,6 +11,11 @@ const localeList = [
 
 module.exports = [
   {
+    type: 'confirm',
+    name: 'hamlet',
+    message: `Use vue-hamlet ? vue-hamlet is used as authentication for frontend.`
+  },
+  {
     type: 'list',
     name: 'i18n',
     message: 'ElementUI i18n options',
