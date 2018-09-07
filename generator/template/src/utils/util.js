@@ -72,6 +72,7 @@ export function getValueByPath(object, prop) {
   const paths = prop.split('.');
   let current = object;
   let result = null;
+
   for (let i = 0, j = paths.length; i < j; i++) {
     const path = paths[i];
     if (!current) break;
@@ -80,8 +81,10 @@ export function getValueByPath(object, prop) {
       result = current[path];
       break;
     }
+
     current = current[path];
   }
+
   return result;
 };
 
@@ -89,9 +92,11 @@ export function sortby(array, sortKey, reverse, sortMethod) {
   if (typeof reverse === 'string') {
     reverse = reverse === 'descending' ? -1 : 1;
   }
+
   if (!sortKey) {
     return array;
   }
+
   const order = (reverse && reverse < 0) ? -1 : 1;
 
   // sort on a copy to avoid mutating original array
@@ -112,36 +117,46 @@ export function compare(a, b) {
   if (typeof a === 'string' && typeof b === 'string') {
     return a.localeCompare(b);
   }
+
   if (typeof a === 'boolean' && typeof b === 'boolean') {
     if (a > b) {
       return 1;
     }
+
     if (a < b) {
       return -1;
     }
+
     return 0;
   }
   if (typeof a === 'number' && typeof b === 'number') {
     if (a > b) {
       return 1;
     }
+
     if (a < b) {
       return -1;
     }
+
     return 0;
   }
+
   if (typeof a === 'number' && typeof b === 'string') {
     return -1;
   }
+
   if (typeof a === 'string' && typeof b === 'number') {
     return 1;
   }
+
   if (typeof a === 'object' && typeof b === 'string') {
     return -1;
   }
+
   if (typeof a === 'string' && typeof b === 'object') {
     return 1;
   }
+
   return 1;
 };
 
@@ -214,8 +229,7 @@ export function deepCompare() {
     for (p in y) {
       if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) {
         return false;
-      }
-      else if (typeof y[p] !== typeof x[p]) {
+      } else if (typeof y[p] !== typeof x[p]) {
         return false;
       }
     }
@@ -223,20 +237,17 @@ export function deepCompare() {
     for (p in x) {
       if (y.hasOwnProperty(p) !== x.hasOwnProperty(p)) {
         return false;
-      }
-      else if (typeof y[p] !== typeof x[p]) {
+      } else if (typeof y[p] !== typeof x[p]) {
         return false;
       }
 
       switch (typeof (x[p])) {
         case 'object':
         case 'function':
-
           leftChain.push(x);
           rightChain.push(y);
-
           if (!compare2Objects (x[p], y[p])) {
-              return false;
+            return false;
           }
 
           leftChain.pop();
@@ -247,6 +258,7 @@ export function deepCompare() {
           if (x[p] !== y[p]) {
             return false;
           }
+
           break;
       }
     }
@@ -255,13 +267,12 @@ export function deepCompare() {
   }
 
   if (arguments.length < 1) {
-    return true; //Die silently? Don't know how to handle such case, please help...
+    return true; // Die silently? Don't know how to handle such case, please help...
     // throw "Need two or more arguments to compare";
   }
 
   for (i = 1, l = arguments.length; i < l; i++) {
-
-    leftChain = []; //Todo: this can be cached
+    leftChain = []; // Todo: this can be cached
     rightChain = [];
 
     if (!compare2Objects(arguments[0], arguments[i])) {
@@ -475,4 +486,20 @@ export function addCommas(val) {
   }
 
   return flag ? `${aIntNum.join('.')}%` : aIntNum.join('.');
+}
+
+export function sortObject (obj, order = 'asc') {
+  const keys = Object.keys(obj)
+  const sortedKeys = order === 'asc' ? keys.sort() : keys.reverse()
+  return sortedKeys.reduce((val, key) => {
+    const v = obj[key]
+    if (isObject(v)) {
+      val[key] = sortObject(v, order)
+    } else if (Array.isArray(v)) {
+      val[key] = order === 'asc' ? v.sort() : v.reverse()
+    } else {
+      val[key] = v
+    }
+    return val
+  }, {})
 }

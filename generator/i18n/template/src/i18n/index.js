@@ -10,7 +10,6 @@ Vue.use(VueI18n);
 const getLocale = (lang, lcs) => {
   let locale = {};
 
-  // 是需要筛选的这一层, 只拿一个key值
   if (Object.prototype.hasOwnProperty.call(lcs, lang)) {
     locale = lcs[lang];
   } else {
@@ -18,6 +17,7 @@ const getLocale = (lang, lcs) => {
       locale[key] = getLocale(lang, lcs[key]);
     });
   }
+
   return locale;
 };
 
