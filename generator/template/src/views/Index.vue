@@ -59,10 +59,15 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="logout">
               <i class="icon-switch"></i>
+              <%_ if (i18n === 'none') { _%>
+              退出登录
+              <%_ } else { _%>
               {{ $t('common.logout') }}
+              <%_ } _%>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+        <%_ if (i18n !== 'none') { _%>
         <div class="change-lang">
           <span
             @click="switchLang('zh')"
@@ -75,6 +80,7 @@
             En
           </span>
         </div>
+        <%_ } _%>
       </div>
     </el-header>
 
@@ -95,7 +101,9 @@ export default {
   data() {
     return {
       currentYear: (new Date()).getFullYear(),
+      <%_ if (i18n !== 'none') { _%>
       currentLang: this.$i18n.locale,
+      <%_ } _%>
     };
   },
   computed: {
@@ -103,7 +111,11 @@ export default {
       return this.$route.name;
     },
     user() {
-      return this.$store.state.auth ? this.$store.state.auth.user || {} : {};
+      <%_ if (hamlet) { _%>
+      return this.$auth.token() && this.$store.state.auth ? this.$store.state.auth.user || {} : {};
+      <%_ } else {_%>
+      return { username: 'Demo' };
+      <%_ }_%>
     },
   },
   methods: {
@@ -116,23 +128,26 @@ export default {
       const { auth } = route.meta;
       return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
     },
+    <%_ if (i18n !== 'none') { _%>
     switchLang(lang = 'zh') {
       this.currentLang = lang;
       this.$locale.use(lang);
       localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);
     },
+    <%_ } _%>
     logout() {
-    <%_ if (hamlet) { _%>
+      <%_ if (hamlet) { _%>
       this.$auth.logout().then(() => {
         this.$router.push({ name: 'Login' });
       });
-    <%_ } else {_%>
+      <%_ } else {_%>
       console.log('logout');
       this.$message({
         showClose: true,
         message: 'Ahem: Please add logout function',
       });
-    <%_ }_%>
+      this.$router.push({ name: 'Login' });
+      <%_ }_%>
     },
   },
   created() {

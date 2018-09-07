@@ -11,6 +11,7 @@
     </div>
 
     <div class="panel-content">
+      <%_ if (i18n !== 'none') { _%>
       <div class="change-lang">
         <span
           @click="switchLang('zh')"
@@ -23,22 +24,37 @@
           En
         </span>
       </div>
+      <%_ } _%>
 
       <el-row class="login-con">
         <el-form>
-          <h1 v-if="!isMobile">{{ $t('common.loginN') }}</h1>
+          <h1 v-if="!isMobile">
+            <%_ if (i18n === 'none') { _%>
+            Login
+            <%_ } else { _%>
+            {{ $t('common.loginN') }}
+            <%_ } _%>
+          </h1>
           <!-- <p>Don’t have an account? <el-button type="text">Create your account</el-button></p> -->
           <el-form-item>
             <el-input
               size="medium"
+              <%_ if (i18n === 'none') { _%>
+              placeholder="用户名"
+              <%_ } else { _%>
               :placeholder="$t('common.username')"
+              <%_ } _%>
               v-model="form.username"
               @keyup.enter.native="login"></el-input>
           </el-form-item>
           <el-form-item>
             <el-input
               size="medium"
+              <%_ if (i18n === 'none') { _%>
+              placeholder="密码"
+              <%_ } else { _%>
               :placeholder="$t('common.password')"
+              <%_ } _%>
               v-model="form.password"
               type="password"
               @keyup.enter.native="login"></el-input>
@@ -48,7 +64,11 @@
               <el-button
                 type="text"
                 @click="redirectForgotPassword">
+                <%_ if (i18n === 'none') { _%>
+                忘记密码?
+                <%_ } else { _%>
                 {{ $t('common.forgetPassword') }}
+                <%_ } _%>
               </el-button>
             </el-col>
             <el-col :span="12">
@@ -58,7 +78,11 @@
                 style="width:100%"
                 :disabled="loginLoading"
                 @click="login">
+                <%_ if (i18n === 'none') { _%>
+                登录
+                <%_ } else { _%>
                 {{ $t('common.login') }}
+                <%_ } _%>
                 <i v-if="loginLoading"
                   class="el-icon-loading"></i>
               </el-button>
@@ -68,7 +92,11 @@
       </el-row>
 
       <el-footer>
+        <%_ if (i18n === 'none') { _%>
+        © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤 ICP 备 14054704 号 - 4
+        <%_ } else { _%>
         {{ $t('common.copyrightMessage', { currentYear }) }}
+        <%_ } _%>
       </el-footer>
     </div>
 
@@ -87,24 +115,19 @@ export default {
         password: '',
       },
       loginLoading: false,
+      <%_ if (i18n !== 'none') { _%>
       currentLang: this.$i18n.locale,
+      <%_ } _%>
     };
   },
   computed: {
-    user() {
-      if (this.$auth.token()) {
-        return this.$store.state.auth.user || {};
-      }
-
-      return {};
-    },
     isMobile() {
       return isMobile();
     },
   },
   methods: {
     login() {
-    <%_ if (hamlet) { _%>
+      <%_ if (hamlet) { _%>
       if (!this.form.password || !this.form.username) {
         return;
       }
@@ -121,7 +144,11 @@ export default {
         const { data } = res.body;
 
         if (!data) {
+          <%_ if (i18n === 'none') { _%>
+          this.$message.error('用户名或密码错误！');
+          <%_ } else { _%>
           this.$message.error(this.$t('common.invalid_password_username'));
+          <%_ } _%>
           return;
         }
 
@@ -134,43 +161,58 @@ export default {
         if (enableLoginLock && (reason !== 'invalid login or password' ||
           (maxAttempts && maxAttempts <= failedCount))) {
           this.locked = true;
+          <%_ if (i18n === 'none') { _%>
+          this.$message.error('您的账号已被锁定，请联系管理员！');
+          <%_ } else { _%>
           this.$message.error(this.$t('common.account_is_locked'));
+          <%_ } _%>
         } else if (enableLoginLock && maxAttempts && failedCount !== null && failedCount <= maxAttempts) {
+          <%_ if (i18n === 'none') { _%>
+          this.$message.error(`用户名或密码错误, 剩余登录次数{remainedCount}次！`);
+          <%_ } else { _%>
           if (this.$locale.current() === 'en' && remainedCount === 1) {
             this.$message.error('Invalid Username or Password. last login Remained.');
           } else {
             this.$message.error(this.$t('common.invalid_password_username_number', { number: remainedCount }));
           }
+          <%_ } _%>
         } else {
+          <%_ if (i18n === 'none') { _%>
+          this.$message.error('用户名或密码错误！');
+          <%_ } else { _%>
           this.$message.error(this.$t('common.invalid_password_username'));
+          <%_ } _%>
         }
       }).finally(() => {
         this.loginLoading = false;
       });
-    <%_ } else {_%>
+      <%_ } else {_%>
       console.log('login');
       this.$message({
         showClose: true,
         message: 'Ahem: Please add login function',
       });
-    <%_ }_%>
+      this.$router.push({ name: 'Index' });
+      <%_ }_%>
     },
+    <%_ if (i18n !== 'none') { _%>
     switchLang(lang) {
       this.currentLang = lang;
       this.$locale.use(lang);
       localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);
     },
+    <%_ } _%>
     redirectForgotPassword() {
-    <%_ if (hamlet) { _%>
+      <%_ if (hamlet) { _%>
       /* eslint-disable max-len */
       window.location = `${process.env.VUE_APP_HAMLET_URL}/forgot_password?app_key=${process.env.VUE_APP_APP_KEY}&callback_url=${document.location.href}`;
-    <%_ } else {_%>
+      <%_ } else {_%>
       console.log('redirectForgotPassword');
       this.$message({
         showClose: true,
         message: 'Ahem: Please add redirect function',
       });
-    <%_ }_%>
+      <%_ }_%>
     },
   },
   created() {

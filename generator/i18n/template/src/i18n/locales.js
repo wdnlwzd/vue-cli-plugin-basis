@@ -94,11 +94,11 @@ export default {
     },
     invalid_password_username: {
       en: 'Invalid password or username',
-      zh: '用户名或密码错误',
+      zh: '用户名或密码错误！',
     },
     invalid_password_username_number: {
       en: 'Invalid Username or Password. {number} logins Remained.',
-      zh: '用户名或密码错误, 剩余登录次数{number}次 ',
+      zh: '用户名或密码错误, 剩余登录次数{number}次！',
     },
     account_is_locked: {
       en: 'Account Locked! Please Contact Administrator to Unlock.',
