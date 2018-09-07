@@ -1,22 +1,35 @@
-## Vue-CLI 3 plugin for ym
+## Vue-CLI 3.x plugin for ym
 
-### Currently this is just a beta version
+### Currently this is just a beta version.
+
+
+### Intro
+
+`ym-basis` plugin to add [element](https://github.com/ElemeFE/element), [vue-hamlet](https://github.com/yimian/vue-hamlet), [vue-i18n](https://github.com/kazupon/vue-i18n) and [moment](https://github.com/moment/moment) to your Vue Project.
+This plugin will provide login and homepage.
 
 ## Getting Started
 
 ### Install:
 
-If you haven't yet installed Vue-CLI 3, first follow the install instructions here: https://github.com/vuejs/vue-cli
+:warning: Make sure you have vue-cli 3.x:
 
-Create your new project with Vue-CLI 3:
+```
+vue --version
+```
+
+If you haven't yet installed Vue-CLI 3.x, first follow the install instructions here: https://github.com/vuejs/vue-cli
+
+Create your new project with Vue-CLI 3.x:
 
 ```bash
 vue create my-app
 ```
 
-Before installing the `ym-basis` plugin, make sure to commit or stash your changes in case you need to revert
+Before installing the `ym-basis` plugin, make sure to commit or stash your changes in case you need to revert.
 
-Then, to install the ym-basis plugin...
+Navigate to the newly created project folder
+Then, to install the ym-basis plugin:
 
 ```bash
 cd my-app
@@ -24,6 +37,8 @@ vue add ym-basis
 ```
 
 Finally, serve your project which will be available at http://localhost:8090
+
+Start your app:
 
 ```bash
 npm run serve
