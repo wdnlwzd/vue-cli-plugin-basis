@@ -2,7 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-ym-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-ym-basis)
 
-### Currently this is just a beta version.
+### :warning: Heads up
+
+Currently this is just a beta version.
 
 
 ### :book: Intro
@@ -32,6 +34,7 @@ vue create my-app
 ```
 
 Before installing the `ym-basis` plugin, make sure to commit or stash your changes in case you need to revert.
+
 Navigate to the newly created project folder,
 Then, to install the ym-basis plugin:
 
@@ -48,9 +51,13 @@ Start your app:
 npm run serve
 ```
 
+Open http://localhost:8090/demo to see the demo.
+
 ### :white_check_mark: TODO
 
 - add [vuetify](https://github.com/vuetifyjs/vuetify)
+- ~~add [Vue-ECharts](https://github.com/ecomfe/vue-echarts)~~
+- add [ECharts](https://github.com/apache/incubator-echarts)
 - ......
 - ......
 
