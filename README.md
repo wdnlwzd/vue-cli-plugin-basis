@@ -56,8 +56,8 @@ Open http://localhost:8090/demo to see the demo.
 ### :white_check_mark: TODO
 
 - add [vuetify](https://github.com/vuetifyjs/vuetify)
-- ~~add [Vue-ECharts](https://github.com/ecomfe/vue-echarts)~~
-- add [ECharts](https://github.com/apache/incubator-echarts)
+- ~~add [ECharts](https://github.com/apache/incubator-echarts)~~
+- add [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
 - ......
 - ......
 
