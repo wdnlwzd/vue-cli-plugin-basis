@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-ym-basis",
-  "version": "v0.4.0-beta.9",
+  "version": "v0.5.0-beta.1",
   "description": "Basic plugin for YM",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,9 @@
   "keywords": [
     "vue",
     "cli",
+    "ym",
     "basis",
+    "ym-basis",
     "vue-cli 3.x",
     "vue-cli-plugin",
     "plugin"
@@ -28,6 +30,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "prettier": "^1.14.2"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^3.0.1"
+  }
 }

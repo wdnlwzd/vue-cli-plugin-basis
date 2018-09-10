@@ -10,7 +10,6 @@ function addAbsoluteImports(lines) {
 }
 
 module.exports = (api) => {
-
   helpers.updateFile(api, api.entryFile, lines => {
     lines = addAbsoluteImports(lines);
     lines.reverse();
@@ -30,6 +29,7 @@ module.exports = (api) => {
     lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
 
     lines.reverse().join('\n');
+
     return lines;
   });
 }

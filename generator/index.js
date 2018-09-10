@@ -2,9 +2,10 @@ const updatePremain = require('./pre-main');
 const updateMain = require('./main');
 const updateFiles = require('./tools/files');
 const updateEslintrc = require('./tools/eslintrc');
+const prettier = require('prettier');
 
 module.exports = (api, opts, rootOptions) => {
-  api.render('./template');
+  api.render('./template', opts);
 
   api.extendPackage({
     dependencies: {
@@ -39,6 +40,12 @@ module.exports = (api, opts, rootOptions) => {
       // updateFiles(api, opts, files);
 
       // console.log('files', Object.keys(files));
+      files['src/main.js'] = prettier.format(files['src/main.js'], {
+        semi: true,
+        singleQuote: true,
+        parser: 'babylon',
+        trailingComma: 'all',
+      });
       const needDeleteFiles = [
         'router.js',
         'store.js',

@@ -25,7 +25,6 @@ Vue.prototype.$locale = {
 `;
   lines[lastImportIndex] += `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE') || 'zh';`;
   lines[lastImportIndex] += `\nlocale.use(i18n.locale === 'zh' ? zhLang : enLang);`;
-  lines[lastImportIndex] += `\n`;
   return lines;
 }
 
