@@ -41,6 +41,7 @@ module.exports = (api, opts, rootOptions) => {
 
       // console.log('files', Object.keys(files));
       files['src/main.js'] = prettier.format(files['src/main.js'], {
+        tabWidth: 2,
         semi: true,
         singleQuote: true,
         parser: 'babylon',

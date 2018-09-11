@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h2>Hello, Welcome to come here</h2>
-    <h3>This is a beta version</h3>
+    <div style="text-align:center;">
+      <h2>Hello, Welcome to come here.</h2>
+      <h3>This is a beta version.</h3>
+      <h3>Start your creation as much as you can.</h3>
+    </div>
     <el-row>
       <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
         <el-radio-button :label="false">展开</el-radio-button>
