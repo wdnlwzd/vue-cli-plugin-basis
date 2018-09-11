@@ -21,7 +21,7 @@ module.exports = (api, opts, rootOptions) => {
   console.log('opts', opts);
   updatePremain(api, opts);
   if (opts.i18n !== 'none') {
-    require('./i18n')(api, opts, rootOptions);
+    require('./plugins/i18n')(api, opts, rootOptions);
   }
 
   opts.hamlet && require('./utils/vue-hamlet')(api, opts);
@@ -33,7 +33,6 @@ module.exports = (api, opts, rootOptions) => {
     // update .eslintrc.js
     updateEslintrc(api);
   });
-
 
   if (api.invoking) {
     api.postProcessFiles(files => {
