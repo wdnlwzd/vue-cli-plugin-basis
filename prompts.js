@@ -17,6 +17,22 @@ module.exports = [
   },
   {
     type: 'list',
+    name: 'ui',
+    message: 'Confirm your UI framework',
+    choices: [
+      {
+        name: 'None',
+        value: 'none'
+      },
+      {
+        name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
+        value: 'element-ui'
+      }
+    ],
+    default: 'element-ui',
+  },
+  {
+    type: 'list',
     name: 'i18n',
     message: 'ElementUI i18n options',
     choices: [
