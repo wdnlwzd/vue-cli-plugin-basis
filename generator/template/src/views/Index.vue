@@ -70,8 +70,8 @@
         <%_ if (i18n !== 'none') { _%>
         <div class="change-lang">
           <span
-            @click="switchLang('zh')"
-            :class="{ 'active-lang': currentLang === 'zh' }">
+            @click="switchLang('zh-CN')"
+            :class="{ 'active-lang': currentLang === 'zh-CN' }">
             中文
           </span> /
           <span
@@ -129,7 +129,7 @@ export default {
       return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
     },
     <%_ if (i18n !== 'none') { _%>
-    switchLang(lang = 'zh') {
+    switchLang(lang = 'zh-CN') {
       this.currentLang = lang;
       this.$locale.use(lang);
       localStorage.setItem('<%= rootOptions.projectName.toUpperCase() %>_LANGUAGE', lang);

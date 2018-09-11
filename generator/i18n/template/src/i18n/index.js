@@ -26,10 +26,10 @@ const enLocale = Object.assign({}, getLocale('en', locales), elEnLocale);
 const zhLocale = Object.assign({}, getLocale('zh', locales), elZhLocale);
 const messages = {
   en: enLocale,
-  zh: zhLocale,
+  'zh-CN': zhLocale,
 };
 
 export default new VueI18n({
-  locale: 'zh',
+  locale: 'zh-CN',
   messages,
 });

@@ -14,8 +14,8 @@
       <%_ if (i18n !== 'none') { _%>
       <div class="change-lang">
         <span
-          @click="switchLang('zh')"
-          :class="{ 'active-lang': currentLang === 'zh' }">
+          @click="switchLang('zh-CN')"
+          :class="{ 'active-lang': currentLang === 'zh-CN' }">
           中文
         </span> /
         <span

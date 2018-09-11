@@ -16,15 +16,15 @@ function addLocale(rootOptions, lines, lastImportIndex) {
 Vue.prototype.$locale = {
   use(lang) {
     i18n.locale = lang;
-    locale.use(lang === 'zh' ? zhLang : enLang);
+    locale.use(lang === 'zh-CN' ? zhLang : enLang);
   },
   current() {
     return i18n.locale;
   },
 };
 `;
-  lines[lastImportIndex] += `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE') || 'zh';`;
-  lines[lastImportIndex] += `\nlocale.use(i18n.locale === 'zh' ? zhLang : enLang);`;
+  lines[lastImportIndex] += `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE') || 'zh-CN';`;
+  lines[lastImportIndex] += `\nlocale.use(i18n.locale === 'zh-CN' ? zhLang : enLang);`;
   return lines;
 }
 
