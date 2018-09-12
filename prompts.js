@@ -26,19 +26,30 @@ module.exports = [
       },
       {
         name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
-        value: 'element-ui'
+        value: 'element'
       },
       // {
       //   name: 'Material Component Framework for Vue.js 2.0',
       //   value: 'vuetify'
       // }
     ],
-    default: 'element-ui',
+    default: 'element',
+  },
+  {
+    when: answers => answers.ui === 'element',
+    type: 'list',
+    name: 'import',
+    message: 'How do you want to import Element?',
+    choices: [
+      { name: 'Fully import', value: 'full' },
+      { name: 'Import on demand', value: 'partial' }
+    ],
+    default: 'partial',
   },
   {
     type: 'list',
     name: 'i18n',
-    message: 'ElementUI i18n options',
+    message: 'Element i18n options',
     choices: [
       { name: 'None', value: 'none' },
       // { name: 'Standard', value: 'standard' },
@@ -59,21 +70,4 @@ module.exports = [
   //   choices: localeList,
   //   default: [ 'zh-CN', 'en' ],
   // }
-  // {
-  //   type: 'list',
-  //   name: 'import',
-  //   message: 'How do you want to import Element?',
-  //   choices: [
-  //     { name: 'Fully import', value: 'full' },
-  //     { name: 'Import on demand', value: 'partial' }
-  //   ],
-  //   default: 'full',
-  // },
-  // {
-  //   when: answers => answers.import === 'full',
-  //   type: 'confirm',
-  //   name: 'customTheme',
-  //   message: 'Do you wish to overwrite Element\'s SCSS variables?',
-  //   default: false,
-  // },
 ];

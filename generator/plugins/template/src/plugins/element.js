@@ -1,5 +1,7 @@
 import Vue from 'vue';
-// import Element from 'element-ui';
+<%_ if (opts.import === 'full') { _%>
+import Element from 'element-ui';
+<%_ } else { _%>
 import {
   Col, Row, Menu, Container,
   Submenu, Dropdown, DropdownMenu,
@@ -20,9 +22,12 @@ import {
   Header, Badge, Main,
   Footer, Tree, Aside,
 } from 'element-ui';
+<%_ } _%>
 import 'element-ui/lib/theme-chalk/index.css';
 
-// Vue.use(Element);
+<%_ if (opts.import === 'full') { _%>
+Vue.use(Element);
+<%_ } else { _%>
 Vue.use(Col);
 Vue.use(Header);
 Vue.use(Row);
@@ -79,3 +84,4 @@ Vue.use(Aside);
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$notify = Notification;
+<%_ } _%>
