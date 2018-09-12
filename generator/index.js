@@ -1,7 +1,7 @@
 const updatePremain = require('./pre-main');
 const updateMain = require('./main');
-const updateFiles = require('./tools/files');
-const updateEslintrc = require('./tools/eslintrc');
+const updateFiles = require('./utils/files');
+const updateEslintrc = require('./utils/eslintrc');
 const prettier = require('prettier');
 
 module.exports = (api, opts, rootOptions) => {
@@ -17,15 +17,14 @@ module.exports = (api, opts, rootOptions) => {
     },
   });
 
-
   console.log('opts', opts);
   updatePremain(api, opts);
   if (opts.i18n !== 'none') {
     require('./plugins/i18n')(api, opts, rootOptions);
   }
 
-  opts.hamlet && require('./utils/vue-hamlet')(api, opts);
-  opts.moment && require('./utils/moment')(api);
+  opts.hamlet && require('./tools/vue-hamlet')(api, opts);
+  opts.moment && require('./tools/moment')(api);
   api.onCreateComplete(() => {
     // update main.js
     updateMain(api);

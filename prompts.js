@@ -27,7 +27,11 @@ module.exports = [
       {
         name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
         value: 'element-ui'
-      }
+      },
+      // {
+      //   name: 'Material Component Framework for Vue.js 2.0',
+      //   value: 'vuetify'
+      // }
     ],
     default: 'element-ui',
   },
@@ -55,4 +59,21 @@ module.exports = [
   //   choices: localeList,
   //   default: [ 'zh-CN', 'en' ],
   // }
+  // {
+  //   type: 'list',
+  //   name: 'import',
+  //   message: 'How do you want to import Element?',
+  //   choices: [
+  //     { name: 'Fully import', value: 'full' },
+  //     { name: 'Import on demand', value: 'partial' }
+  //   ],
+  //   default: 'full',
+  // },
+  // {
+  //   when: answers => answers.import === 'full',
+  //   type: 'confirm',
+  //   name: 'customTheme',
+  //   message: 'Do you wish to overwrite Element\'s SCSS variables?',
+  //   default: false,
+  // },
 ];

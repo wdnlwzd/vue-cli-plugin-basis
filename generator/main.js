@@ -1,4 +1,4 @@
-const helpers = require('./tools/helpers');
+const helpers = require('./utils/helpers');
 
 module.exports = (api) => {
   helpers.updateFile(api, api.entryFile, lines => {
