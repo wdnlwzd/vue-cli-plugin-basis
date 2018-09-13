@@ -48,7 +48,6 @@ export default new Router({
           component: Homepage,
           meta: {
             icon: 'home',
-            auth: [],
             hidden: false,
           },
         },
@@ -60,7 +59,6 @@ export default new Router({
           },
           meta: {
             icon: 'people_outline',
-            auth: [],
           },
         },
         {
@@ -69,7 +67,6 @@ export default new Router({
           component: Root,
           meta: {
             hasSub: true,
-            auth: [],
           },
           children: [
             {
