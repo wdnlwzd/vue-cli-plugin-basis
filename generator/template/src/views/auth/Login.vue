@@ -5,9 +5,9 @@
     </span>
 
     <div class="slogan-wrapper">
-      <el-row class="slogan">
+      <div class="slogan">
         <img src="../../assets/login-bg2.svg" alt="">
-      </el-row>
+      </div>
     </div>
 
     <div class="panel-content">
@@ -26,7 +26,8 @@
       </div>
       <%_ } _%>
 
-      <el-row class="login-con">
+      <%_ if (ui === 'element') { _%>
+      <div class="login-con">
         <el-form>
           <h1 v-if="!isMobile">
             <%_ if (i18n === 'none') { _%>
@@ -89,7 +90,7 @@
             </el-col>
           </el-form-item>
         </el-form>
-      </el-row>
+      </div>
 
       <el-footer>
         <%_ if (i18n === 'none') { _%>
@@ -98,8 +99,69 @@
         {{ $t('common.copyrightMessage', { currentYear }) }}
         <%_ } _%>
       </el-footer>
+      <%_ } else { _%>
+      <v-app class="login-con">
+        <!-- <v-spacer></v-spacer> -->
+        <v-content>
+          <v-container fluid fill-height>
+            <v-layout align-center justify-center>
+              <v-flex>
+                <h1 v-if="!isMobile">
+                  Login
+                </h1>
+                <v-form>
+                  <v-text-field
+                    v-model="form.username"
+                    prepend-icon="person"
+                    clearable
+                    label="Username"
+                    @keyup.enter.native="login"
+                    required
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="form.password"
+                    prepend-icon="lock"
+                    @keyup.enter.native="login"
+                    clearable
+                    type="password"
+                    label="Password"
+                    required
+                  ></v-text-field>
+                  <v-layout row wrap>
+                    <v-flex class="text-lg-right">
+                      <v-btn
+                        flat small color="primary"
+                        @click="redirectForgotPassword"
+                      >
+                        忘记密码?
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                  <v-flex >
+                    <v-btn
+                      :disabled="loginLoading"
+                      @click="login"
+                    >
+                      Submit
+                    </v-btn>
+                  </v-flex>
+                </v-form>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-content>
+        <v-footer>
+          <div>
+            <%_ if (i18n === 'none') { _%>
+            © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤 ICP 备 14054704 号 - 4
+            <%_ } else { _%>
+            {{ $t('common.copyrightMessage', { currentYear }) }}
+            <%_ } _%>
+          </div>
+        </v-footer>
+      </v-app> 
+      <%_ } _%>
     </div>
-
   </div>
 </template>
 
@@ -168,7 +230,7 @@ export default {
           <%_ } _%>
         } else if (enableLoginLock && maxAttempts && failedCount !== null && failedCount <= maxAttempts) {
           <%_ if (i18n === 'none') { _%>
-          this.$message.error(`用户名或密码错误, 剩余登录次数{remainedCount}次！`);
+          this.$message.error(`用户名或密码错误, 剩余登录次数${remainedCount}次！`);
           <%_ } else { _%>
           if (this.$locale.current() === 'en' && remainedCount === 1) {
             this.$message.error('Invalid Username or Password. last login Remained.');
