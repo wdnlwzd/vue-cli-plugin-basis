@@ -73,6 +73,9 @@ export default {
   data() {
     return {
       isCollapse: true,
+      <%_ if (ui === 'vuetify') { _%>
+      source: 'https://github.com/vasttian/vue-cli-plugin-ym-basis/blob/master/generator/template/src/views/admin/Homepage.vue',
+      <%_ } _%>
     };
   },
   methods: {
