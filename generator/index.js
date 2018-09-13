@@ -23,8 +23,11 @@ module.exports = (api, opts, rootOptions) => {
   }
 
   opts.ui === 'element' && require('./tools/element')(api, opts);
+  opts.ui === 'vuetify' && require('./tools/vuetify')(api, opts);
+  
   opts.hamlet && require('./tools/vue-hamlet')(api, opts);
   opts.moment && require('./tools/moment')(api);
+
   api.onCreateComplete(() => {
     // update main.js
     updateMain(api);

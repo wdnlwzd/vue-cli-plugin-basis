@@ -11,13 +11,13 @@ const localeList = [
 
 module.exports = [
   {
-    type: 'confirm',
     name: 'hamlet',
+    type: 'confirm',
     message: `Use vue-hamlet ? vue-hamlet is used as authentication for frontend.`
   },
   {
-    type: 'list',
     name: 'ui',
+    type: 'list',
     message: 'Confirm your UI framework',
     choices: [
       {
@@ -28,23 +28,51 @@ module.exports = [
         name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
         value: 'element'
       },
-      // {
-      //   name: 'Material Component Framework for Vue.js 2.0',
-      //   value: 'vuetify'
-      // }
+      {
+        name: 'Vuetify, Material Component Framework for Vue.js 2.0',
+        value: 'vuetify'
+      }
     ],
     default: 'element',
   },
   {
     when: answers => answers.ui === 'element',
+    name: 'importUI',
     type: 'list',
-    name: 'import',
     message: 'How do you want to import Element?',
     choices: [
       { name: 'Fully import', value: 'full' },
       { name: 'Import on demand', value: 'partial' }
     ],
     default: 'partial',
+  },
+  {
+    when: answers => answers.ui === 'vuetify',
+    name: 'iconFont',
+    type: 'rawlist',
+    message: 'Select icon font',
+    choices: [
+      'Material Icons (default)',
+      'Material Design Icons',
+      'Font Awesome 5',
+      'Font Awesome 4',
+    ],
+    default: 0,
+    filter: function (val) {
+      return {
+        'Material Icons (default)': 'md',
+        'Material Design Icons': 'mdi',
+        'Font Awesome 5': 'fa',
+        'Font Awesome 4': 'fa4',
+      }[val]
+    }
+  },
+  {
+    when: answers => answers.ui === 'vuetify',
+    name: 'installFonts',
+    type: 'confirm',
+    message: 'Use fonts as a dependency (for Electron or offline)?',
+    default: false,
   },
   {
     type: 'list',
