@@ -5,7 +5,8 @@
       <h3>This is a beta version.</h3>
       <h3>Start your creation as much as you can.</h3>
     </div>
-    <el-row>
+    <%_ if (ui === 'element') { _%>
+    <div>
       <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true">收起</el-radio-button>
@@ -47,7 +48,23 @@
           <span slot="title">导航四</span>
         </el-menu-item>
       </el-menu>
-    </el-row>
+    </div>
+    <%_ } else { _%>
+    <v-layout justify-center align-center>
+      <v-tooltip right>
+        <v-btn
+          icon
+          large
+          :href="source"
+          target="_blank"
+          slot="activator"
+        >
+          <v-icon large>code</v-icon>
+        </v-btn>
+        <span>Source</span>
+      </v-tooltip>
+    </v-layout>
+  <%_ } _%>
   </div>
 </template>
 
@@ -59,19 +76,23 @@ export default {
     };
   },
   methods: {
+    <%_ if (ui === 'element') { _%>
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    <%_ } _%>
   },
 };
 </script>
 
 <style>
+  <%_ if (ui === 'element') { _%>
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
   }
+  <%_ } _%>
 </style>
