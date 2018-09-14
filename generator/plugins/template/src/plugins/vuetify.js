@@ -8,7 +8,7 @@ import i18n from '../i18n';
 Vue.use(Vuetify, {
   <%_ if (opts.i18n === 'vuei18n') { _%>
   lang: {
-    locales: { enLang, zhHans },
+    locales: { enLang, zhLang },
     current: 'enLang',
   },
   <%_ } _%>

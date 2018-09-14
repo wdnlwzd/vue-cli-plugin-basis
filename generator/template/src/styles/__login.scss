@@ -84,8 +84,11 @@
   .login-con {
     width: 100%;
     padding: 0 20px;
-    max-width: 520px;
 
+    .frame {
+      max-width: 520px;
+    }
+    
     h1 {
       font-family: Source Sans Pro, Futura, Century Gothic, Arial Black;
       font-size: 40px;

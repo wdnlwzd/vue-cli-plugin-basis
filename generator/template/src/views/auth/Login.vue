@@ -11,7 +11,7 @@
     </div>
 
     <div class="panel-content">
-      <%_ if (i18n !== 'element') { _%>
+      <%_ if (i18n === 'element') { _%>
       <div class="change-lang">
         <span
           @click="switchLang('zh-CN')"
