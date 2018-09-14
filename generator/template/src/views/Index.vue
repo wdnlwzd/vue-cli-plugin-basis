@@ -108,15 +108,19 @@
       <v-toolbar-items>
         <template v-for="(route, index) in $router.options.routes[1].children">
           <template v-if="route.meta.hasSub">
-            <v-list>
-              <v-list-group
-                :key="index"
-              >
-                <v-list-tile slot="activator">
-                  <v-list-tile-title>
-                    {{ route.name }}
-                  </v-list-tile-title>
-                </v-list-tile>
+            <v-menu
+              :key="index"
+              bottom
+              origin="bottom center"
+              offset-y
+              transition="scale-transition">
+              <v-btn
+                slot="activator"
+                flat>
+                {{ route.name }}
+                <v-icon dark>arrow_drop_down</v-icon>
+              </v-btn>
+              <v-list :key="index">
                 <v-list-tile
                   v-for="(cRoute, idx) in route.children"
                   :to="{ name: cRoute.name }"
@@ -130,25 +134,39 @@
                     </v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
-              </v-list-group>
-            </v-list>
+              </v-list>
+            </v-menu>
           </template>
           <template v-else>
-            <v-list>
-              <v-list-tile :to="{ name: route.name }">
-                <v-list-tile-action v-if="route.meta && route.meta.icon">
-                  <v-icon>{{ route.meta.icon }}</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    {{ route.name }}
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
+            <v-btn
+              :key="index"
+              flat
+              :to="{ name: route.name }">
+              {{ route.name }}
+             </v-btn>
           </template>
         </template>
       </v-toolbar-items>
+      <v-spacer></v-spacer>
+      <v-menu offset-y>
+        <v-toolbar-title slot="activator">
+          <v-avatar size="40">
+            <img
+              src="http://67.218.155.2:8082/1.png"
+              alt="Vasttian">
+          </v-avatar>
+          <span style="margin-left: 10px;">vasttian</span>
+          <v-icon>arrow_drop_down</v-icon>
+        </v-toolbar-title>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title>Account</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile @click="logout">
+            <v-list-tile-title>Log Out</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
     <v-navigation-drawer
       stateless
@@ -156,8 +174,7 @@
       clipped
       fixed
       app
-      v-model="drawerRight"
-    >
+      v-model="drawerRight">
       <v-list>
         <v-list-tile>
           <v-list-tile-action>
@@ -168,8 +185,7 @@
 
         <v-list-group
           prepend-icon="account_circle"
-          value="true"
-        >
+          value="true">
           <v-list-tile slot="activator">
             <v-list-tile-title>Users</v-list-tile-title>
           </v-list-tile>
@@ -177,17 +193,14 @@
           <v-list-group
             no-action
             sub-group
-            value="true"
-          >
+            value="true">
             <v-list-tile slot="activator">
               <v-list-tile-title>Admin</v-list-tile-title>
             </v-list-tile>
 
             <v-list-tile
               v-for="(admin, i) in admins"
-              :key="i"
-              @click=""
-            >
+              :key="i">
               <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
               <v-list-tile-action>
                 <v-icon v-text="admin[1]"></v-icon>
@@ -197,17 +210,14 @@
 
           <v-list-group
             sub-group
-            no-action
-          >
+            no-action>
             <v-list-tile slot="activator">
               <v-list-tile-title>Actions</v-list-tile-title>
             </v-list-tile>
 
             <v-list-tile
               v-for="(crud, i) in cruds"
-              :key="i"
-              @click=""
-            >
+              :key="i">
               <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
               <v-list-tile-action>
                 <v-icon v-text="crud[1]"></v-icon>
