@@ -24,6 +24,12 @@ import {
 } from 'element-ui';
 <%_ } _%>
 import 'element-ui/lib/theme-chalk/index.css';
+<%_ if (opts.i18n !== 'none') { _%>
+import i18n from '../i18n';
+import locale from 'element-ui/lib/locale';
+import zhLang from 'element-ui/lib/locale/lang/zh-CN';
+import enLang from 'element-ui/lib/locale/lang/en';
+<%_ } _%>
 
 <%_ if (opts.import === 'full') { _%>
 Vue.use(Element);
@@ -80,6 +86,20 @@ Vue.use(Main);
 Vue.use(Footer);
 Vue.use(Tree);
 Vue.use(Aside);
+
+<%_ if (opts.i18n !== 'none') { _%>
+Vue.prototype.$locale = {
+  use(lang) {
+    i18n.locale = lang;
+    locale.use(lang === 'zh-CN' ? zhLang : enLang);
+  },
+  current() {
+    return i18n.locale;
+  },
+};
+
+locale.use(i18n.locale === 'zh-CN' ? zhLang : enLang);
+<%_ } _%>
 
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;
