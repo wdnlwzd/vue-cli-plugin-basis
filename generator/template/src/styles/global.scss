@@ -4,7 +4,7 @@ html, body{
   margin: 0;
   padding: 0;
   position: relative;
-  overflow-y: auto !important;
+  overflow-: auto !important;
 }
 
 * {
@@ -28,6 +28,24 @@ ul, li {
 }
 
 
+// COMMON
+.flex-box {
+  display: flex;
+  align-items: center;
+
+  &.space-btw {
+    justify-content: space-between;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+}
+
 // LAYOUT
 #app {
   height: 100%;
@@ -46,31 +64,6 @@ ul, li {
       display: inline-block;
       height: 32px;
       vertical-align: middle;
-    }
-  }
-
-  .el-menu {
-    &--horizontal {
-      border-bottom: 0;
-      background-color: transparent;
-    }
-
-    .el-menu-item {
-      border-bottom: 0;
-      color: #91bdf0;
-      margin: 0px 20px;
-      font-size: 16px;
-      font-weight: 600;
-
-      &:hover, &:active {
-        color: #237ae0;
-        background-color: transparent;
-      }
-
-      &.is-active {
-        color: #fff;
-        background-color: transparent;
-      }
     }
   }
 
@@ -146,22 +139,4 @@ ul, li {
   text-align: center;
   color: gray;
   font-size: 12px;
-}
-
-// COMMON
-.flex-box {
-  display: flex;
-  align-items: center;
-
-  &.space-btw {
-    justify-content: space-between;
-  }
-
-  &.end {
-    justify-content: flex-end;
-  }
-
-  &.center {
-    justify-content: center;
-  }
 }
