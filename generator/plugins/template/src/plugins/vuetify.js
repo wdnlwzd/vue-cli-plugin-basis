@@ -18,6 +18,7 @@ Vue.use(Vuetify, {
 const that = Vue.prototype;
 that.$locale = {
   use(lang) {
+    i18n.locale = lang;  
     that.$vuetify.lang.current = lang === 'zh-CN' ? 'zhLang' : 'enLang';
   },
   current() {

@@ -1,142 +1,153 @@
-html, body{
+.panel-wrapper {
   width: 100%;
   height: 100%;
+  display: block;
   margin: 0;
   padding: 0;
-  position: relative;
-  overflow-: auto !important;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-size: 14px;
-  background: #fff;
-  font-family: Roboto, sans-serif, serif, Helvetica Neue, Helvetica,"Open Sans", open-sans, PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  color: #183a6f;
   overflow: hidden;
-}
-
-ul, li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-
-// COMMON
-.flex-box {
-  display: flex;
-  align-items: center;
-
-  &.space-btw {
-    justify-content: space-between;
-  }
-
-  &.end {
-    justify-content: flex-end;
-  }
-
-  &.center {
-    justify-content: center;
-  }
-}
-
-// LAYOUT
-#app {
-  height: 100%;
-  width: 100%;
-}
-
-// HEADER
-.el-header {
-  background-color: #065bc9;
-  font-weight: 500;
-  border-bottom: 1px solid rgba(6, 34, 76, .2);
 
   .logo {
-    margin-right: 60px;
+    display: block;
+    position: absolute;
+    width: 175px;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+
     img {
       display: inline-block;
-      height: 32px;
-      vertical-align: middle;
-    }
-  }
-
-  .userinfo {
-    color: #91bdf0;
-    line-height: 24px;
-    cursor: pointer;
-
-    .avatar {
-      font-size: 20px;
-      margin-right: 8px;
-    }
-
-    &:hover {
-      color: #fff;
+      height: 36px;
     }
   }
 }
 
-.change-lang {
+.slogan-wrapper {
+  height: 100%;
+  background: linear-gradient(#011738,#065bc9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .slogan {
+    margin: 0 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 420px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .panel-wrapper {
+    padding-left: 720px;
+  }
+
+  .slogan-wrapper {
+    position: absolute;
+    width: 720px;
+    left: 0;
+    top: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+  .panel-wrapper {
+    padding-left: 50%;
+  }
+
+  .slogan-wrapper {
+    position: absolute;
+    width: 50%;
+    left: 0;
+    top: 0;
+  }
+}
+@media (max-width: 768px) {
+  .slogan-wrapper {
+    display: none;
+  }
+}
+
+.panel-content {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 480px;
+  padding-bottom: 40px;
+
+  .login-con {
+    width: 100%;
+    padding: 0 20px;
+
+    h1 {
+      font-family: Source Sans Pro, Futura, Century Gothic, Arial Black;
+      font-size: 40px;
+      font-weight: 800;
+      color: #5d7498;
+      margin-bottom: 40px;
+    }
+
+    .frame {
+      max-width: 520px;
+    }
+
+    .el-button--large {
+      margin-top: 0;
+    }
+  }
+
+  .el-footer {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .change-lang {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    span {
+      cursor: pointer;
+      padding: 0 4px;
+      color: #5d7498;
+
+      &.active-lang {
+        color: #237ae0;
+      }
+    }
+  }
+}
+
+.resetpsw-result {
   display: block;
-  cursor: pointer;
-  margin-left: 20px;
-  color: #65a2e9;
+  width: 300px;
+  margin: 80px auto;
+  position: relative;
 
-  span {
-    cursor: pointer;
-    padding: 0 2px;
-
-    &.active-lang {
-      color: #0302f5;
-    }
+  h3 {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    font-weight: 400;
   }
-}
 
-// MAIN
-.el-container {
-  height: 100%;
-}
+  .el-icon-success {
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
 
-.el-main {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  padding: 0;
-  transition: 80ms;
-}
-
-.sub-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #fff;
-  width: 100%;
-  z-index: 2001;
-  background-color: #065bc9;
-}
-
-.wrapper {
-  height: 100%;
-  position: relative;
-  background-color: #fff;
-  overflow-y: auto;
-}
-
-.content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.el-footer {
-  text-align: center;
-  color: gray;
-  font-size: 12px;
+  .el-button {
+    margin-left: 36px;
+  }
 }

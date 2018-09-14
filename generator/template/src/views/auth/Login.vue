@@ -11,7 +11,7 @@
     </div>
 
     <div class="panel-content">
-      <%_ if (i18n !== 'none') { _%>
+      <%_ if (i18n !== 'element') { _%>
       <div class="change-lang">
         <span
           @click="switchLang('zh-CN')"
@@ -28,7 +28,7 @@
 
       <%_ if (ui === 'element') { _%>
       <div class="login-con">
-        <el-form>
+        <el-form class="frame">
           <h1 v-if="!isMobile">
             <%_ if (i18n === 'none') { _%>
             Login
@@ -103,9 +103,23 @@
       <v-app class="login-con">
         <!-- <v-spacer></v-spacer> -->
         <v-content>
+          <%_ if (i18n !== 'element') { _%>
+          <div class="change-lang">
+            <span
+              @click="switchLang('zh-CN')"
+              :class="{ 'active-lang': currentLang === 'zh-CN' }">
+              中文
+            </span> /
+            <span
+              @click="switchLang('en')"
+              :class="{ 'active-lang': currentLang === 'en' }">
+              En
+            </span>
+          </div>
+          <%_ } _%> 
           <v-container fluid fill-height>
             <v-layout align-center justify-center>
-              <v-flex>
+              <v-flex class="frame">
                 <h1 v-if="!isMobile">
                   Login
                 </h1>
