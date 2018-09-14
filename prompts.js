@@ -37,7 +37,7 @@ module.exports = [
   },
   {
     when: answers => answers.ui === 'element',
-    name: 'importUI',
+    name: 'import',
     type: 'list',
     message: 'How do you want to import Element?',
     choices: [
