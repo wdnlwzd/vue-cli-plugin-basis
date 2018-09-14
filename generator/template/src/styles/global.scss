@@ -1,153 +1,167 @@
-.panel-wrapper {
+html, body{
   width: 100%;
   height: 100%;
-  display: block;
   margin: 0;
   padding: 0;
+  position: relative;
+  overflow-y: auto !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  background: #fff;
+  font-family: Roboto, sans-serif, serif, Helvetica Neue, Helvetica,"Open Sans", open-sans, PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: #183a6f;
   overflow: hidden;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+// LAYOUT
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+// HEADER
+.el-header {
+  background-color: #065bc9;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(6, 34, 76, .2);
 
   .logo {
-    display: block;
-    position: absolute;
-    width: 175px;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-
+    margin-right: 60px;
     img {
       display: inline-block;
-      height: 36px;
-    }
-  }
-}
-
-.slogan-wrapper {
-  height: 100%;
-  background: linear-gradient(#011738,#065bc9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .slogan {
-    margin: 0 20px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 420px;
-
-    img {
-      width: 100%;
-    }
-  }
-}
-
-@media (min-width: 1440px) {
-  .panel-wrapper {
-    padding-left: 720px;
-  }
-
-  .slogan-wrapper {
-    position: absolute;
-    width: 720px;
-    left: 0;
-    top: 0;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1440px) {
-  .panel-wrapper {
-    padding-left: 50%;
-  }
-
-  .slogan-wrapper {
-    position: absolute;
-    width: 50%;
-    left: 0;
-    top: 0;
-  }
-}
-@media (max-width: 768px) {
-  .slogan-wrapper {
-    display: none;
-  }
-}
-
-.panel-content {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  min-height: 480px;
-  padding-bottom: 40px;
-
-  .login-con {
-    width: 100%;
-    padding: 0 20px;
-
-    h1 {
-      font-family: Source Sans Pro, Futura, Century Gothic, Arial Black;
-      font-size: 40px;
-      font-weight: 800;
-      color: #5d7498;
-      margin-bottom: 40px;
-    }
-
-    .frame {
-      max-width: 520px;
-    }
-
-    .el-button--large {
-      margin-top: 0;
+      height: 32px;
+      vertical-align: middle;
     }
   }
 
-  .el-footer {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
+  .el-menu {
+    &--horizontal {
+      border-bottom: 0;
+      background-color: transparent;
+    }
 
-  .change-lang {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 30px;
+    .el-menu-item {
+      border-bottom: 0;
+      color: #91bdf0;
+      margin: 0px 20px;
+      font-size: 16px;
+      font-weight: 600;
 
-    span {
-      cursor: pointer;
-      padding: 0 4px;
-      color: #5d7498;
-
-      &.active-lang {
+      &:hover, &:active {
         color: #237ae0;
+        background-color: transparent;
+      }
+
+      &.is-active {
+        color: #fff;
+        background-color: transparent;
       }
     }
   }
+
+  .userinfo {
+    color: #91bdf0;
+    line-height: 24px;
+    cursor: pointer;
+
+    .avatar {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
-.resetpsw-result {
+.change-lang {
   display: block;
-  width: 300px;
-  margin: 80px auto;
+  cursor: pointer;
+  margin-left: 20px;
+
+  span {
+    cursor: pointer;
+    padding: 0 2px;
+    color: #53546a;
+
+    &.active-lang {
+      color: #0302f5;
+    }
+  }
+}
+
+// MAIN
+.el-container {
+  height: 100%;
+}
+
+.el-main {
+  height: 100%;
+  width: 100%;
   position: relative;
+  padding: 0;
+  transition: 80ms;
+}
 
-  h3 {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    font-weight: 400;
+.sub-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  z-index: 2001;
+  background-color: #065bc9;
+}
+
+.wrapper {
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.el-footer {
+  text-align: center;
+  color: gray;
+  font-size: 12px;
+}
+
+// COMMON
+.flex-box {
+  display: flex;
+  align-items: center;
+
+  &.space-btw {
+    justify-content: space-between;
   }
 
-  .el-icon-success {
-    font-size: 24px;
-    vertical-align: middle;
-    margin-right: 10px;
+  &.end {
+    justify-content: flex-end;
   }
 
-  .el-button {
-    margin-left: 36px;
+  &.center {
+    justify-content: center;
   }
 }

@@ -180,14 +180,19 @@
             </v-layout>
           </v-container>
         </v-content>
-        <v-footer>
-          <div>
-            <%_ if (i18n === 'none') { _%>
-            © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤 ICP 备 14054704 号 - 4
-            <%_ } else { _%>
-            {{ $t('common.copyrightMessage', { currentYear }) }}
-            <%_ } _%>
-          </div>
+
+        <v-footer
+          color="#fbfbfb"
+          height="auto">
+          <v-layout>
+            <v-flex text-xs-center>
+              <%_ if (i18n === 'none') { _%>
+              © 2014 - {{ currentYear }} 深圳市一面网络技术有限公司 粤 ICP 备 14054704 号 - 4
+              <%_ } else { _%>
+              {{ $t('common.copyrightMessage', { currentYear }) }}
+              <%_ } _%>
+            </v-flex>
+          </v-layout>
         </v-footer>
       </v-app>
       <%_ } _%>

@@ -79,7 +79,6 @@
   align-items: center;
   height: 100%;
   min-height: 480px;
-  padding-bottom: 40px;
 
   .login-con {
     width: 100%;
@@ -88,7 +87,7 @@
     .frame {
       max-width: 520px;
     }
-    
+
     h1 {
       font-family: Source Sans Pro, Futura, Century Gothic, Arial Black;
       font-size: 40px;
@@ -118,7 +117,7 @@
     span {
       cursor: pointer;
       padding: 0 4px;
-      color: #5d7498;
+      color: #53546a;
 
       &.active-lang {
         color: #237ae0;
@@ -151,5 +150,3 @@
     margin-left: 36px;
   }
 }
-
-
