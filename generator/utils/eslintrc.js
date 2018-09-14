@@ -10,7 +10,13 @@ module.exports = api => {
     // console.log('cfg.rules', rules);
     Object.assign(rules, { 'no-console': 0 });
     Object.assign(rules, { 'no-shadow': 0 });
-    Object.assign(rules, { 'max-len': ['error', 120] });
+    Object.assign(rules, {
+      'max-len': ['error', {
+        ignoreStrings: true,
+        ignoreRegExpLiterals: true,
+        code: 120
+      }],
+    });
     Object.assign(rules, {
       'no-param-reassign': ['error', {
         props: true,
