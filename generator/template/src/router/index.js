@@ -11,19 +11,19 @@ const Root = Vue.component('temp', {
 });
 
 const Create = {
-  template:`<div class="title">Create</div>`
+  template: '<div class="title">Create</div>',
 };
 
 const Read = {
-  template:`<div class="title">Read</div>`
+  template: '<div class="title">Read</div>',
 };
 
 const Update = {
-  template:`<div class="title">Update</div>`
+  template: '<div class="title">Update</div>',
 };
 
 const Delete = {
-  template:`<div class="title">Delete</div>`
+  template: '<div class="title">Delete</div>',
 };
 
 export default new Router({
@@ -55,7 +55,7 @@ export default new Router({
           path: '/users',
           name: 'Users',
           component: {
-            template:`<div class="title">Users</div>`,
+            template: '<div class="title">Users</div>',
           },
           meta: {
             icon: 'people_outline',

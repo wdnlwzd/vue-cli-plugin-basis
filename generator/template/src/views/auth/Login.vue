@@ -159,7 +159,7 @@
             <%_ } _%>
           </div>
         </v-footer>
-      </v-app> 
+      </v-app>
       <%_ } _%>
     </div>
   </div>
