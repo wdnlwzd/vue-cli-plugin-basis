@@ -16,6 +16,9 @@
       <el-menu
         :default-active="activeMenu"
         mode="horizontal"
+        background-color="#065bc9"
+        text-color="#fff"
+        active-text-color="#21d5cb"
         router>
         <template v-for="(route, index) in $router.options.routes[1].children">
           <template
@@ -160,14 +163,39 @@
         </v-toolbar-title>
         <v-list>
           <v-list-tile>
-            <v-list-tile-title>Account</v-list-tile-title>
+            <v-list-tile-title>
+              <%_ if (i18n === 'none') { _%>
+              修改密码
+              <%_ } else { _%>
+              {{ $t('common.account') }}
+              <%_ } _%>
+            </v-list-tile-title>
           </v-list-tile>
           <v-list-tile @click="logout">
-            <v-list-tile-title>Log Out</v-list-tile-title>
+            <v-list-tile-title>
+              <%_ if (i18n === 'none') { _%>
+              退出登录
+              <%_ } else { _%>
+              {{ $t('common.logout') }}
+              <%_ } _%> 
+            </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
+      <div class="change-lang">
+        <span
+          @click="switchLang('zh-CN')"
+          :class="{ 'active-lang': currentLang === 'zh-CN' }">
+          中文
+        </span> /
+        <span
+          @click="switchLang('en')"
+          :class="{ 'active-lang': currentLang === 'en' }">
+          En
+        </span>
+      </div>
     </v-toolbar>
+
     <v-navigation-drawer
       stateless
       value="true"

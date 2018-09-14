@@ -114,7 +114,11 @@
                     v-model="form.username"
                     prepend-icon="person"
                     clearable
-                    label="Username"
+                    <%_ if (i18n === 'none') { _%>
+                    label="用户名"
+                    <%_ } else { _%>
+                    :label="$t('common.username')"
+                    <%_ } _%>
                     @keyup.enter.native="login"
                     required
                   ></v-text-field>
@@ -124,7 +128,11 @@
                     @keyup.enter.native="login"
                     clearable
                     type="password"
-                    label="Password"
+                    <%_ if (i18n === 'none') { _%>
+                    label="密码"
+                    <%_ } else { _%>
+                    :label="$t('common.password')"
+                    <%_ } _%>
                     required
                   ></v-text-field>
                   <v-layout row wrap>
@@ -133,7 +141,11 @@
                         flat small color="primary"
                         @click="redirectForgotPassword"
                       >
+                        <%_ if (i18n === 'none') { _%>
                         忘记密码?
+                        <%_ } else { _%>
+                        {{ $t('common.forgetPassword') }}
+                        <%_ } _%>
                       </v-btn>
                     </v-flex>
                   </v-layout>
@@ -142,7 +154,11 @@
                       :disabled="loginLoading"
                       @click="login"
                     >
-                      Submit
+                      <%_ if (i18n === 'none') { _%>
+                      登录
+                      <%_ } else { _%>
+                      {{ $t('common.login') }}
+                      <%_ } _%>
                     </v-btn>
                   </v-flex>
                 </v-form>
