@@ -4,7 +4,7 @@ html, body{
   margin: 0;
   padding: 0;
   position: relative;
-  overflow-y：auto !important;
+  overflow-y: auto !important;
 }
 
 * {
@@ -88,20 +88,20 @@ ul, li {
       color: #fff;
     }
   }
+}
 
-  .change-lang {
-    display: block;
+.change-lang {
+  display: block;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #65a2e9;
+
+  span {
     cursor: pointer;
-    margin-left: 20px;
-    color: #65a2e9;
+    padding: 0 2px;
 
-    span {
-      cursor: pointer;
-      padding: 0 2px;
-
-      &.active-lang {
-        color: #d3e4f9;
-      }
+    &.active-lang {
+      color: #0302f5;
     }
   }
 }
