@@ -33,7 +33,7 @@
                 :key="idx"
                 :index="cRoute.name"
                 :route="cRoute">
-                <span slot="title">{{ route.name }}</span>
+                <span slot="title">{{ cRoute.name }}</span>
               </el-menu-item>
             </el-submenu>
           </template>
