@@ -13,6 +13,9 @@ module.exports = (api, opts) => {
     dependencies: {
       'vuetify': '^1.2.3',
     },
+    devDependencies: {
+
+    },
   });
 
   polyfill.addDependencies(api);
@@ -23,6 +26,23 @@ module.exports = (api, opts) => {
   api.render({
     ['./src/plugins/vuetify.js']: '../plugins/template/src/plugins/vuetify.js',
   }, { opts });
+
+  if (opts.customTheme) {
+    api.render({
+      './src/stylus': '../plugins/vuetify/template/stylus',
+    });
+    api.extendPackage({
+      dependencies: {
+
+      },
+      devDependencies: {
+        'css-loader': '^1.0.0',
+        // 'style-loader': '^0.23.0',
+        'stylus': '^0.54.5',
+        'stylus-loader': '^3.0.2',
+      },
+    });
+  }
 
   api.onCreateComplete(() => {
     polyfill.updateBabelConfig(api);

@@ -75,6 +75,12 @@ module.exports = [
     default: false,
   },
   {
+    when: answers => answers.ui === 'vuetify',
+    name: 'customTheme',
+    message: 'Do you wish to overwrite Stylus variables?',
+    default: false,
+  },
+  {
     type: 'list',
     name: 'i18n',
     message: 'Element i18n options',
