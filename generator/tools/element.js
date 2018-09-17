@@ -28,11 +28,19 @@ module.exports = (api, opts) => {
           'styleLibraryName': 'theme-chalk',
         }];
 
-        
-        // Prevent duplication
-        // if () {
-        // }
         cfg.plugins = cfg.plugins || [];
+
+        // Prevent duplication
+        for (let i = 0, len = cfg.plugins.length; i < len; i += 1) {
+          const temp = cfg.plugins[i];
+          if (temp[0] === 'component' &&
+            temp[1] &&
+            temp[1].libraryName === 'element-ui' &&
+            temp[1].styleLibraryName) {
+            return cfg;
+          }
+        }
+
         cfg.plugins.push(pluginComponent);
         return cfg;
       });
