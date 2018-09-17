@@ -6,7 +6,7 @@ import 'vuetify/dist/vuetify.min.css';
 import i18n from '../i18n';
 
 Vue.use(Vuetify, {
-  <%_ if (opts.i18n === 'vuei18n') { _%>
+  <%_ if (opts.i18n !== 'none') { _%>
   lang: {
     locales: { enLang, zhLang },
     current: 'enLang',
@@ -14,7 +14,7 @@ Vue.use(Vuetify, {
   <%_ } _%>
 });
 
-<%_ if (opts.i18n === 'vuei18n') { _%>
+<%_ if (opts.i18n !== 'none') { _%>
 const that = Vue.prototype;
 that.$locale = {
   use(lang) {

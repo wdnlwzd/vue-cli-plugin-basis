@@ -11,7 +11,8 @@
     </div>
 
     <div class="panel-content">
-      <%_ if (i18n === 'element') { _%>
+      <%_ if (ui === 'element') { _%>
+      <%_ if (i18n !== 'none') { _%>
       <div class="change-lang">
         <span
           @click="switchLang('zh-CN')"
@@ -25,8 +26,6 @@
         </span>
       </div>
       <%_ } _%>
-
-      <%_ if (ui === 'element') { _%>
       <div class="login-con">
         <el-form class="frame">
           <h1 v-if="!isMobile">
@@ -103,7 +102,7 @@
       <v-app class="login-con">
         <!-- <v-spacer></v-spacer> -->
         <v-content>
-          <%_ if (i18n !== 'element') { _%>
+          <%_ if (i18n !== 'none') { _%>
           <div class="change-lang">
             <span
               @click="switchLang('zh-CN')"
