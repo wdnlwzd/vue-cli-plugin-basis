@@ -13,7 +13,7 @@ module.exports = (api, opts) => {
     dependencies: {
       'vue-hamlet': 'github:yimian/vue-hamlet#v1.0.2',
       'vuex-router-sync': '^5.0.0',
-    }
+    },
   });
   api.onCreateComplete(() => {
     helpers.updateFile(api, api.entryFile, lines => {

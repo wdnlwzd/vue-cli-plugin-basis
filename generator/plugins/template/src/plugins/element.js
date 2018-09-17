@@ -25,10 +25,10 @@ import {
 <%_ } _%>
 import 'element-ui/lib/theme-chalk/index.css';
 <%_ if (opts.i18n !== 'none') { _%>
-import i18n from '../i18n';
-import locale from 'element-ui/lib/locale';
-import zhLang from 'element-ui/lib/locale/lang/zh-CN';
-import enLang from 'element-ui/lib/locale/lang/en';
+  import locale from 'element-ui/lib/locale';
+  import zhLang from 'element-ui/lib/locale/lang/zh-CN';
+  import enLang from 'element-ui/lib/locale/lang/en';
+  import i18n from '../i18n';
 <%_ } _%>
 
 <%_ if (opts.import === 'full') { _%>

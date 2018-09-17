@@ -2,7 +2,6 @@
   <%_ if (ui === 'element') { _%>
   <el-container>
     <el-header
-      height="54px"
       class="flex-box space-btw">
       <!-- logo -->
       <router-link

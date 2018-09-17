@@ -12,7 +12,7 @@ module.exports = (api, opts) => {
   api.extendPackage({
     dependencies: {
       'vuetify': '^1.2.3',
-    }
+    },
   });
 
   polyfill.addDependencies(api);
