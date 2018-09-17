@@ -115,7 +115,7 @@
               En
             </span>
           </div>
-          <%_ } _%> 
+          <%_ } _%>
           <v-container fluid fill-height>
             <v-layout align-center justify-center>
               <v-flex class="frame">
@@ -148,12 +148,17 @@
                     <%_ } _%>
                     required
                   ></v-text-field>
-                  <v-layout row wrap>
-                    <v-flex class="text-lg-right">
+                  <v-layout
+                    column
+                    wrap
+                    justify-end
+                    align-end>
+                    <v-flex>
                       <v-btn
-                        flat small color="primary"
-                        @click="redirectForgotPassword"
-                      >
+                        flat
+                        small
+                        color="primary"
+                        @click="redirectForgotPassword">
                         <%_ if (i18n === 'none') { _%>
                         忘记密码?
                         <%_ } else { _%>
@@ -161,19 +166,18 @@
                         <%_ } _%>
                       </v-btn>
                     </v-flex>
+                    <v-flex>
+                      <v-btn
+                        :disabled="loginLoading"
+                        @click="login">
+                        <%_ if (i18n === 'none') { _%>
+                        登录
+                        <%_ } else { _%>
+                        {{ $t('common.login') }}
+                        <%_ } _%>
+                      </v-btn>
+                    </v-flex>
                   </v-layout>
-                  <v-flex >
-                    <v-btn
-                      :disabled="loginLoading"
-                      @click="login"
-                    >
-                      <%_ if (i18n === 'none') { _%>
-                      登录
-                      <%_ } else { _%>
-                      {{ $t('common.login') }}
-                      <%_ } _%>
-                    </v-btn>
-                  </v-flex>
                 </v-form>
               </v-flex>
             </v-layout>
