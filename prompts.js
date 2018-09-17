@@ -13,7 +13,8 @@ module.exports = [
   {
     name: 'hamlet',
     type: 'confirm',
-    message: `Use vue-hamlet ? vue-hamlet is used as authentication for frontend.`
+    message: `Use vue-hamlet ? vue-hamlet is used as authentication for frontend.`,
+    default: true,
   },
   {
     name: 'ui',
@@ -64,7 +65,7 @@ module.exports = [
         'Material Design Icons': 'mdi',
         'Font Awesome 5': 'fa',
         'Font Awesome 4': 'fa4',
-      }[val]
+      }[val];
     }
   },
   {
@@ -77,12 +78,13 @@ module.exports = [
   {
     when: answers => answers.ui === 'vuetify',
     name: 'customTheme',
+    type: 'confirm',
     message: 'Do you wish to overwrite Stylus variables?',
-    default: false,
+    default: true,
   },
   {
-    type: 'list',
     name: 'i18n',
+    type: 'list',
     message: 'Element i18n options',
     choices: [
       { name: 'None', value: 'none' },
@@ -92,14 +94,15 @@ module.exports = [
     default: 'vuei18n',
   },
   {
-    type: 'confirm',
     name: 'moment',
-    message: `Use moment ? Parse, validate, manipulate, and display dates and times in JavaScript.`
+    type: 'confirm',
+    message: `Use moment ? Parse, validate, manipulate, and display dates and times in JavaScript.`,
+    default: true,
   },
   // {
   //   when: answers => answers.i18n === 'vuei18n',
-  //   type: 'checkbox',
   //   name: 'vuei18nLocales',
+  //   type: 'checkbox',
   //   message: "Select the locales you want to load (default values: 'zh-CN', 'en')",
   //   choices: localeList,
   //   default: [ 'zh-CN', 'en' ],

@@ -1,5 +1,7 @@
+<%_ if (ui === 'element') { _%>
 @import "../../element-variables.scss";
 
+<%_ } _%>
 html, body{
   width: 100%;
   height: 100%;

@@ -55,7 +55,8 @@ Open http://localhost:8090/demo to see the demo.
 
 ### :white_check_mark: TODO
 
-- TODO: Fix i18n
+- TODO: Fix customTheme.
+- TODO: Fix i18n.
 - add: [vuetify](https://github.com/vuetifyjs/vuetify)
 - ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
