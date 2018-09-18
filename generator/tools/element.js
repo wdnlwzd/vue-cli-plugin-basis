@@ -11,6 +11,8 @@ module.exports = (api, opts) => {
     api.extendPackage({
       devDependencies: {
         'babel-plugin-component': '^1.1.1',
+        'sass-loader': '^7.1.0',
+        'node-sass': '^4.9.3',
       },
     });
   }
