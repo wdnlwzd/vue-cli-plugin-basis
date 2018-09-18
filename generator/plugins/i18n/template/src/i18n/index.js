@@ -1,6 +1,11 @@
 import Vue from 'vue';
-import elEnLocale from 'element-ui/lib/locale/lang/en';
-import elZhLocale from 'element-ui/lib/locale/lang/zh-CN';
+<%_ if (ui === 'element') { _%>
+import enLang from 'element-ui/lib/locale/lang/en';
+import zhLang from 'element-ui/lib/locale/lang/zh-CN';
+<%_ } else if (ui === 'vuetify') { _%>
+import enLang from 'vuetify/es5/locale/en';
+import zhLang from 'vuetify/es5/locale/zh-Hans';
+<%_ } _%>
 import VueI18n from 'vue-i18n';
 import locales from './locales';
 
@@ -22,8 +27,8 @@ const getLocale = (lang, lcs) => {
 };
 
 
-const enLocale = Object.assign({}, getLocale('en', locales), elEnLocale);
-const zhLocale = Object.assign({}, getLocale('zh', locales), elZhLocale);
+const enLocale = Object.assign({}, getLocale('en', locales), enLang);
+const zhLocale = Object.assign({}, getLocale('zh', locales), zhLang);
 const messages = {
   en: enLocale,
   'zh-CN': zhLocale,
