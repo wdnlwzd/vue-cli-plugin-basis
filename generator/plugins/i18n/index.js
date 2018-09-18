@@ -6,8 +6,8 @@ function addLocale(api, rootOptions, lines, lastImportIndex) {
   return lines;
 }
 
-module.exports = (api, options, rootOptions) => {
-  api.render('./template');
+module.exports = (api, opts, rootOptions) => {
+  api.render('./template', opts);
   api.extendPackage({
     dependencies: {
       'vue-i18n': '^8.0.0',
