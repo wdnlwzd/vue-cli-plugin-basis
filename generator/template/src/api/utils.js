@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+<%_ if (ui === 'element') { _%>
 import { Message } from 'element-ui';
+<%_ } else if (ui === 'vuetify') { _%>
+
+<%_ } _%>
 
 Vue.use(VueResource);
 
@@ -24,6 +28,7 @@ function access(url, param, method) {
   } else {
     ret = Vue.http.get(url, { params: { ...param, __randNum } });
   }
+
   return ret.then((res) => {
     // console.log('res', res);
     // console.log('res.body', res.body);
@@ -40,16 +45,22 @@ function access(url, param, method) {
     //   });
     // }
 
+    let errMsg = '';
     if (res.status === 401) {
-      Message.error('您无权访问该页面');
+      errMsg = '您无权访问该页面';
     } else if (res.status === 403) {
-      Message.error('禁止访问');
+      errMsg = '禁止访问';
     } else if (res.status === 404) {
-      Message.error('您访问的页面不存在了');
+      errMsg = '您访问的页面不存在了';
     } else if (res.status === 500) {
-      Message.error('服务器出了一点问题，请联系管理员');
+      errMsg = '服务器出了一点问题，请联系管理员';
     }
 
+    <%_ if (ui === 'element') { _%>
+    Message.error(errMsg);
+    <%_ } else if (ui === 'vuetify') { _%>
+
+    <%_ } _%>
     // 重新抛出，以便于后面链式处理
     return Promise.reject(res);
   });
