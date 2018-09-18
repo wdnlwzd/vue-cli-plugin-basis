@@ -9,7 +9,7 @@ function addAbsoluteImports(lines) {
 module.exports = (api) => {
   api.extendPackage({
     dependencies: {
-      'moment': '^2.22.2',
+      moment: '^2.22.2',
     },
   });
   api.onCreateComplete(() => {

@@ -49,6 +49,17 @@ module.exports = [
   },
   {
     when: answers => answers.ui === 'vuetify',
+    name: 'import',
+    type: 'list',
+    message: 'How do you want to import Vuetify?',
+    choices: [
+      { name: 'Fully import', value: 'full' },
+      { name: 'Import on demand', value: 'partial' }
+    ],
+    default: 'partial',
+  },
+  {
+    when: answers => answers.ui === 'vuetify',
     name: 'iconFont',
     type: 'rawlist',
     message: 'Select icon font',

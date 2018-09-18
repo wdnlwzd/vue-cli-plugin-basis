@@ -1,5 +1,6 @@
 const helpers = require('../utils/helpers');
 const polyfill = require('../utils/polyfill');
+const alaCarte = require('../utils/alaCarte');
 const fonts = require('./fonts');
 
 function addAbsoluteImports(lines) {
@@ -11,7 +12,7 @@ function addAbsoluteImports(lines) {
 module.exports = (api, opts) => {
   api.extendPackage({
     dependencies: {
-      'vuetify': '^1.2.3',
+      vuetify: '^1.2.3',
     },
     devDependencies: {
 
@@ -19,6 +20,7 @@ module.exports = (api, opts) => {
   });
 
   polyfill.addDependencies(api);
+  opts.import === 'partial'&& alaCarte.addDependencies(api)
   opts.installFonts && fonts.addDependencies(api, opts.iconFont);
   opts.installFonts && fonts.addImports(api, opts.iconFont);
 
@@ -39,7 +41,6 @@ module.exports = (api, opts) => {
       },
       devDependencies: {
         'css-loader': '^1.0.0',
-        // 'style-loader': '^0.23.0',
         'stylus': '^0.54.5',
         'stylus-loader': '^3.0.2',
       },
@@ -50,6 +51,7 @@ module.exports = (api, opts) => {
     polyfill.updateBabelConfig(api);
     polyfill.updateBrowsersList(api);
     polyfill.addImports(api);
+    opts.import === 'partial' && alaCarte.updateBabelConfig(api)
     !opts.installFonts && fonts.addLinks(api, opts.iconFont);
   });
 };
