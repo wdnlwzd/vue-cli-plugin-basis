@@ -24,13 +24,15 @@ module.exports = (api, opts) => {
 
   api.injectImports(api.entryFile, `import './plugins/vuetify';`);
   api.render({
-    ['./src/plugins/vuetify.js']: '../plugins/template/src/plugins/vuetify.js',
+    ['./src/plugins/vuetify.js']: '../plugins/vuetify/index.js',
   }, { opts });
 
   if (opts.customTheme) {
-    api.render({
-      './src/stylus': '../plugins/vuetify/template/stylus',
-    });
+    const files = {
+      './src/stylus/main.styl': '../plugins/vuetify/template/stylus/main.styl',
+    };
+
+    api.render(files, opts);
     api.extendPackage({
       dependencies: {
 
