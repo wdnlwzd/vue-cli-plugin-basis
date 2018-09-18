@@ -16,10 +16,12 @@ module.exports = (api, opts) => {
   }
 
   api.injectImports(api.entryFile, `import './plugins/element';`);
-  api.render({
-    ['./src/plugins/element.js']: '../plugins/template/src/plugins/element.js',
-  }, { opts });
+  const files = {
+    './src/plugins/element.js': '../plugins/element/index.js',
+    './element-variables.scss': '../plugins/element/template/element-variables.scss',
+  };
 
+  api.render(files, { opts });
   api.onCreateComplete(() => {
     if (opts.import === 'partial') {
       helpers.updateBabelConfig(api, cfg => {

@@ -24,7 +24,7 @@ module.exports = (api, opts, rootOptions) => {
 
   opts.ui === 'element' && require('./tools/element')(api, opts);
   opts.ui === 'vuetify' && require('./tools/vuetify')(api, opts);
-  
+
   opts.hamlet && require('./tools/vue-hamlet')(api, opts);
   opts.moment && require('./tools/moment')(api);
 
@@ -41,6 +41,8 @@ module.exports = (api, opts, rootOptions) => {
       // updateFiles(api, opts, files);
 
       // console.log('files', Object.keys(files));
+
+      // format main.js
       files['src/main.js'] = prettier.format(files['src/main.js'], {
         tabWidth: 2,
         semi: true,
