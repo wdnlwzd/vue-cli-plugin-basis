@@ -9,6 +9,31 @@ function addAbsoluteImports(lines) {
   return lines;
 }
 
+/**
+ * If you switch from partial import to full import.
+ * You need to remove the `transform-imports` configuration added for the partial import in the `babel.config.js` file.
+ * Finally, you need to rerun the service.
+ */
+function removeTransformImports(api) {
+  // ~~vuetify.preventFullImport = false;~~
+  helpers.updateBabelConfig(api, cfg => {
+    if (cfg.plugins) {
+      for (let i = 0, len = cfg.plugins.length; i < len; i += 1) {
+        const temp = cfg.plugins[i];
+        if (temp[0] === 'transform-imports' && temp[1] && temp[1].vuetify) {
+          const vuetify = temp[1].vuetify;
+          if (vuetify.transform === 'vuetify/es5/components/${member}' && vuetify.preventFullImport) {
+            cfg.plugins.splice(i, 1);
+            return cfg;
+          }
+        }
+      }
+    }
+
+    return cfg;
+  });
+}
+
 module.exports = (api, opts) => {
   api.extendPackage({
     dependencies: {
@@ -55,7 +80,10 @@ module.exports = (api, opts) => {
     polyfill.updateBabelConfig(api);
     polyfill.updateBrowsersList(api);
     polyfill.addImports(api);
-    opts.import === 'partial' && alaCarte.updateBabelConfig(api)
+    opts.import === 'partial' && alaCarte.updateBabelConfig(api);
     !opts.installFonts && fonts.addLinks(api, opts.iconFont);
+
+    // hack
+    opts.import === 'full' && removeTransformImports(api);
   });
 };
