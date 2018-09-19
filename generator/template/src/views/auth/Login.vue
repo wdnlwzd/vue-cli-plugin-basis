@@ -288,6 +288,7 @@ export default {
       });
       <%_ } else {_%>
       console.log('login');
+      this.$router.push({ name: 'Index' });
       <%_ if (ui === 'element') { _%>
       this.$message({
         showClose: true,
@@ -299,7 +300,6 @@ export default {
         type: 'info',
         text: 'Ahem: Please add login function',
       });
-      this.$router.push({ name: 'Index' });
       <%_ } _%>
       <%_ } _%>
     },

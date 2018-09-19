@@ -87,6 +87,10 @@ Vue.use(Footer);
 Vue.use(Tree);
 Vue.use(Aside);
 
+Vue.prototype.$message = Message;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$notify = Notification;
+<%_ } _%>
 <%_ if (opts.i18n !== 'none') { _%>
 Vue.prototype.$locale = {
   use(lang) {
@@ -99,9 +103,4 @@ Vue.prototype.$locale = {
 };
 
 locale.use(i18n.locale === 'zh-CN' ? zhLang : enLang);
-<%_ } _%>
-
-Vue.prototype.$message = Message;
-Vue.prototype.$msgbox = MessageBox;
-Vue.prototype.$notify = Notification;
 <%_ } _%>

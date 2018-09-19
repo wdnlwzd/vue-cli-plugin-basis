@@ -328,6 +328,7 @@ export default {
       });
       <%_ } else {_%>
       console.log('logout');
+      this.$router.push({ name: 'Login' });
       <%_ if (ui === 'element') { _%>
       this.$message({
         showClose: true,
@@ -338,7 +339,6 @@ export default {
         type: 'info',
         text: 'Ahem: Please add logout function',
       });
-      this.$router.push({ name: 'Login' });
       <%_ } _%>
       <%_ } _%>
     },
