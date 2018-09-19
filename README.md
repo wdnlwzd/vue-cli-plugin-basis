@@ -12,11 +12,12 @@ You need to rerun the service.**
 ### :book: Intro
 
 `ym-basis` plugin to add:
-[Element](https://github.com/ElemeFE/element),
-[Vuetify](https://github.com/vuetifyjs/vuetify),
-[Vue Hamlet](https://github.com/yimian/vue-hamlet),
-[Vue I18n](https://github.com/kazupon/vue-i18n),
-[Moment](https://github.com/moment/moment),
+1. [Element](https://github.com/ElemeFE/element),
+2. [Vuetify](https://github.com/vuetifyjs/vuetify),
+3. [Vue Hamlet](https://github.com/yimian/vue-hamlet),
+4. [Vue I18n](https://github.com/kazupon/vue-i18n),
+5. [Moment](https://github.com/moment/moment),
+
 to your Vue Project.
 
 This plugin will provide login and homepage.
