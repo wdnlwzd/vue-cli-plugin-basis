@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-ym-basis",
-  "version": "v0.5.2-beta2",
+  "version": "v0.5.2-beta3",
   "description": "Basic plugin for YM",
   "main": "index.js",
   "scripts": {

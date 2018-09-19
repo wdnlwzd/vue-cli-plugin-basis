@@ -51,15 +51,14 @@ Start your app:
 npm run serve
 ```
 
-Open http://localhost:8090/demo to see the demo.
+Open http://localhost:8090 to see the demo.
 
 ### :white_check_mark: TODO
 
-- TODO: add global notification system.
-- TODO: Fix api.
 - add: [vuetify](https://github.com/vuetifyjs/vuetify)
 - ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
+- mod: change VueResource to axios.
 - ......
 - ......
 
