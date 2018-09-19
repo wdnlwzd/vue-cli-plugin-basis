@@ -25,10 +25,14 @@ module.exports = (api, opts) => {
   opts.installFonts && fonts.addImports(api, opts.iconFont);
 
   api.injectImports(api.entryFile, `import './plugins/vuetify';`);
-  api.render({
-    ['./src/plugins/vuetify.js']: '../plugins/vuetify/index.js',
-  }, { opts });
+  const files = {
+    './src/plugins/vuetify.js': '../plugins/vuetify/index.js',
+    './src/components/snackbar/index.js': '../plugins/vuetify/components/snackbar/index.js',
+    './src/components/snackbar/src/main.js': '../plugins/vuetify/components/snackbar/src/main.js',
+    './src/components/snackbar/src/Main.vue': '../plugins/vuetify/components/snackbar/src/Main.vue',
+  };
 
+  api.render(files, { opts });
   if (opts.customTheme) {
     const files = {
       './src/stylus/main.styl': '../plugins/vuetify/template/stylus/main.styl',

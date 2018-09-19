@@ -56,6 +56,7 @@ import 'vuetify/src/stylus/app.styl';
 <%_ } _%>
 import enLang from 'vuetify/es5/locale/en';
 import zhLang from 'vuetify/es5/locale/zh-Hans';
+import Snackbar from '../components/snackbar/index';
 <%_ if (opts.customTheme) { _%>
 import '../stylus/main.styl';
 <%_ } _%>
@@ -120,6 +121,7 @@ Vue.use(Vuetify, {
   <%_ } _%>
 });
 
+Vue.prototype.$message = Snackbar;
 <%_ if (opts.i18n !== 'none') { _%>
 const that = Vue.prototype;
 that.$locale = {
