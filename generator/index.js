@@ -16,7 +16,7 @@ module.exports = (api, opts, rootOptions) => {
     },
   });
 
-  console.log('opts', opts);
+  console.log('options', opts);
   updatePremain(api, opts);
   if (opts.i18n !== 'none') {
     require('./plugins/i18n')(api, opts, rootOptions);
@@ -39,7 +39,6 @@ module.exports = (api, opts, rootOptions) => {
   if (api.invoking) {
     api.postProcessFiles(files => {
       // updateFiles(api, opts, files);
-
       // console.log('files', Object.keys(files));
 
       // format main.js

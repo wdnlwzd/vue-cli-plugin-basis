@@ -88,6 +88,6 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('keydown', this.keydown);
-  }
-}
+  },
+};
 </script>

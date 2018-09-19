@@ -7,14 +7,14 @@ module.exports = api => {
     }
 
     const rules = cfg.rules;
-    // console.log('cfg.rules', rules);
+
     Object.assign(rules, { 'no-console': 0 });
     Object.assign(rules, { 'no-shadow': 0 });
     Object.assign(rules, {
       'max-len': ['error', {
         ignoreStrings: true,
         ignoreRegExpLiterals: true,
-        code: 120
+        code: 120,
       }],
     });
     Object.assign(rules, {
@@ -23,8 +23,8 @@ module.exports = api => {
         ignorePropertyModificationsFor: [
           'state', // for vuex state
           'acc', // for reduce accumulators
-          'e' // for e.returnvalue
-        ]
+          'e', // for e.returnvalue
+        ],
       }],
     });
 
