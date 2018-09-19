@@ -5,7 +5,7 @@
     @mouseleave="startTimer">
     <v-snackbar
       v-model="visible"
-      :color="color"
+      :color="color || type"
       :bottom="y === 'bottom'"
       :left="x === 'left'"
       :multi-line="mode === 'multi-line'"
@@ -15,7 +15,7 @@
       :vertical="mode === 'vertical'">
       {{ text }}
       <v-btn
-        color="pink"
+        dark
         flat
         @click="close">
         Close
@@ -44,6 +44,7 @@ export default {
       timer: null,
       closed: false,
       duration: this.timeout,
+      type: 'info',
     };
   },
   methods: {

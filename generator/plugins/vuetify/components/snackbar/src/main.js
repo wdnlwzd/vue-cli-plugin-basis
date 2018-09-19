@@ -13,7 +13,7 @@ const Snackbar = (options) => {
 
   if (typeof opts === 'string') {
     opts = {
-      message: opts,
+      text: opts,
     };
   }
 
@@ -29,6 +29,21 @@ const Snackbar = (options) => {
   instances.push(instance);
   return instance.vm;
 };
+
+['success', 'warning', 'info', 'error'].forEach((type) => {
+  Snackbar[type] = (options) => {
+    let opts = options || {};
+
+    if (typeof opts === 'string') {
+      opts = {
+        text: opts,
+      };
+    }
+
+    opts.type = type;
+    return Snackbar(opts);
+  };
+});
 
 Snackbar.close = (id) => {
   for (let i = 0, len = instances.length; i < len; i += 1) {
