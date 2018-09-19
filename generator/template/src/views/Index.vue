@@ -101,11 +101,11 @@
     <v-toolbar
       app
       fixed
-      :clipped-left="$vuetify.breakpoint.mdAndUp">
+      :clipped-left="$vuetify && $vuetify.breakpoint.mdAndUp">
       <v-toolbar-side-icon
         @click.stop="drawerRight = !drawerRight"
       ></v-toolbar-side-icon>
-      <v-toolbar-title>VUE-USE-YM-BASIS</v-toolbar-title>
+      <v-toolbar-title><%= rootOptions.projectName.toUpperCase() %></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-for="(route, index) in $router.options.routes[1].children">
@@ -176,7 +176,7 @@
               退出登录
               <%_ } else { _%>
               {{ $t('common.logout') }}
-              <%_ } _%> 
+              <%_ } _%>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
