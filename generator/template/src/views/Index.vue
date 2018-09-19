@@ -53,8 +53,9 @@
         <el-dropdown>
           <span class="el-dropdown-link userinfo flex-box">
             <span class="avatar flex-box">
-              <!-- <img src="../assets/avatar.svg"> -->
-              <i class="icon-avatar"></i>
+              <img
+                src="http://67.218.155.2:8082/1.png"
+                alt="Demo">
             </span>
             <span>{{ user && user.username }}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
@@ -72,7 +73,7 @@
         </el-dropdown>
         <%_ if (i18n !== 'none') { _%>
         <div class="change-lang">
-        <span
+          <span
             @click="switchLang('zh-CN')"
             :class="{ 'active-lang': currentLang === 'zh-CN' }">
             中文
@@ -155,7 +156,7 @@
           <v-avatar size="40">
             <img
               src="http://67.218.155.2:8082/1.png"
-              alt="Vasttian">
+              alt="Demo">
           </v-avatar>
           <span style="margin-left: 10px;">vasttian</span>
           <v-icon>arrow_drop_down</v-icon>
