@@ -54,13 +54,15 @@ import {
 } from 'vuetify';
 import 'vuetify/src/stylus/app.styl';
 <%_ } _%>
+<%_ if (opts.i18n !== 'none') { _%>
 import enLang from 'vuetify/es5/locale/en';
 import zhLang from 'vuetify/es5/locale/zh-Hans';
+import i18n from '../i18n';
+<%_ } _%>
 import Snackbar from '../components/snackbar/index';
 <%_ if (opts.customTheme) { _%>
 import '../stylus/main.styl';
 <%_ } _%>
-import i18n from '../i18n';
 
 Vue.use(Vuetify, {
   <%_ if (opts.import === 'partial') { _%>

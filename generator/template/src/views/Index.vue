@@ -181,6 +181,7 @@
           </v-list-tile>
         </v-list>
       </v-menu>
+      <%_ if (i18n !== 'none') { _%>
       <div class="change-lang">
         <span
           @click="switchLang('zh-CN')"
@@ -193,6 +194,7 @@
           En
         </span>
       </div>
+      <%_ } _%>
     </v-toolbar>
 
     <v-navigation-drawer
