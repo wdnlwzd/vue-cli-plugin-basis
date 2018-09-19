@@ -327,12 +327,19 @@ export default {
       });
       <%_ } else {_%>
       console.log('logout');
+      <%_ if (ui === 'element') { _%>
       this.$message({
         showClose: true,
         message: 'Ahem: Please add logout function',
       });
+      <%_ } else if (ui === 'vuetify') { _%>
+      this.$message({
+        type: 'info',
+        text: 'Ahem: Please add logout function',
+      });
       this.$router.push({ name: 'Login' });
-      <%_ }_%>
+      <%_ } _%>
+      <%_ } _%>
     },
   },
   created() {

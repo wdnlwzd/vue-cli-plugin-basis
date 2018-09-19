@@ -288,12 +288,20 @@ export default {
       });
       <%_ } else {_%>
       console.log('login');
+      <%_ if (ui === 'element') { _%>
       this.$message({
         showClose: true,
         message: 'Ahem: Please add login function',
       });
+      <%_ } else if (ui === 'vuetify') { _%>
+      // this.$message.info('Ahem: Please add login function');
+      this.$message({
+        type: 'info',
+        text: 'Ahem: Please add login function',
+      });
       this.$router.push({ name: 'Index' });
-      <%_ }_%>
+      <%_ } _%>
+      <%_ } _%>
     },
     <%_ if (i18n !== 'none') { _%>
     switchLang(lang) {
@@ -308,11 +316,18 @@ export default {
       window.location = `${process.env.VUE_APP_HAMLET_URL}/forgot_password?app_key=${process.env.VUE_APP_APP_KEY}&callback_url=${document.location.href}`;
       <%_ } else {_%>
       console.log('redirectForgotPassword');
+      <%_ if (ui === 'element') { _%>
       this.$message({
         showClose: true,
         message: 'Ahem: Please add redirect function',
       });
-      <%_ }_%>
+      <%_ } else if (ui === 'vuetify') { _%>
+      this.$message({
+        type: 'info',
+        text: 'Ahem: Please add redirect function',
+      });
+      <%_ } _%>
+      <%_ } _%>
     },
   },
   created() {
