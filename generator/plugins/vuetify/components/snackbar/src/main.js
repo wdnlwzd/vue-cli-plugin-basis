@@ -4,19 +4,18 @@ import Main from './Main.vue';
 const SnackbarConstructor = Vue.extend(Main);
 
 let instance;
-let instances = [];
+const instances = [];
 let seed = 1;
 
 const Snackbar = (options) => {
   let opts = options || {};
+  const id = `message_${seed += 1}`;
 
   if (typeof opts === 'string') {
     opts = {
       message: opts,
     };
   }
-
-  let id = `message_${seed += 1}`;
 
   instance = new SnackbarConstructor({
     data: opts,
@@ -40,6 +39,9 @@ Snackbar.close = (id) => {
   }
 };
 
+/**
+ * can call Message.closeAll() to manually close all the instances.
+ */
 Snackbar.closeAll = () => {
   for (let i = 0, len = instances.length; i < len; i += 1) {
     instances[i].close();

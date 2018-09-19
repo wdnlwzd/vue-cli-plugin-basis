@@ -1,26 +1,37 @@
 <template>
-  <v-snackbar
-    v-model="visible"
-    :color="color"
-    :bottom="y === 'bottom'"
-    :left="x === left"
-    :multi-line="mode === 'multi-line'"
-    :right="x === 'right'"
-    :timeout="timeout"
-    :top="y === 'top'"
-    :vertical="mode === 'vertical'">
-    {{ text }}
-    <v-btn
-      color="pink"
-      flat
-      @click="close">
-      Close
-    </v-btn>
-  </v-snackbar>
+  <!-- Currently `mouseenter` and `mouseleave` is invalid -->
+  <div
+    @mouseenter="clearTimer"
+    @mouseleave="startTimer">
+    <v-snackbar
+      v-model="visible"
+      :color="color"
+      :bottom="y === 'bottom'"
+      :left="x === 'left'"
+      :multi-line="mode === 'multi-line'"
+      :right="x === 'right'"
+      :timeout="timeout"
+      :top="y === 'top'"
+      :vertical="mode === 'vertical'">
+      {{ text }}
+      <v-btn
+        color="pink"
+        flat
+        @click="close">
+        Close
+      </v-btn>
+    </v-snackbar>
+  </div>
 </template>
 
 <script>
+import { VSnackbar, VBtn } from 'vuetify';
+
 export default {
+  components: {
+    VSnackbar,
+    VBtn,
+  },
   data() {
     return {
       visible: false,
@@ -29,26 +40,49 @@ export default {
       mode: '',
       timeout: 6000,
       text: '',
+      color: null,
+      timer: null,
+      closed: false,
+      duration: this.timeout,
     };
   },
   methods: {
     close() {
       this.visible = false;
+      this.closed = true;
       setTimeout(() => {
-        this.$destroy(true)
-
         // 从DOM里将这个组件移除
+        this.$destroy(true);
+        // console.log('this.$el', this.$el);
         this.$el.parentNode.removeChild(this.$el);
-      }, 500)
+      }, 500);
+    },
+    clearTimer() {
+      // TODO: Can be disabled when the mouse is over.
+      // this.timeout = 0;
+      clearTimeout(this.timer);
+    },
+    startTimer() {
+      // this.timeout = this.duration;
+      if (this.duration > 0) {
+        this.timer = setTimeout(() => {
+          if (!this.closed) {
+            this.close();
+            this.duration = 0;
+          }
+        }, this.duration);
+      }
     },
     keydown(e) {
       // esc关闭消息
-      if (e.keyCode === 27 && !this.visible) {
+      if (e.keyCode === 27 && !this.closed) {
         this.close();
       }
     },
   },
   mounted() {
+    this.duration = this.timeout;
+    this.startTimer();
     document.addEventListener('keydown', this.keydown);
   },
   beforeDestroy() {
