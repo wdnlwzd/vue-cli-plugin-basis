@@ -3,12 +3,6 @@ const polyfill = require('../utils/polyfill');
 const alaCarte = require('../utils/alaCarte');
 const fonts = require('./fonts');
 
-function addAbsoluteImports(lines) {
-  let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
-  lines.splice(lastImportIndex += 1, 0, `import '@babel/polyfill';`);
-  return lines;
-}
-
 /**
  * If you switch from partial import to full import.
  * You need to remove the `transform-imports` configuration added for the partial import in the `babel.config.js` file.

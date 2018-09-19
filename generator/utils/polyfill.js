@@ -4,7 +4,7 @@ function addDependencies(api) {
   api.extendPackage({
     dependencies: {
       "@babel/polyfill": "^7.0.0-rc.1",
-    }
+    },
   });
 }
 
@@ -27,8 +27,8 @@ function updateBabelConfig(api) {
       cfg.presets[vuePresetIndex] = [
         '@vue/app',
         {
-          useBuiltIns: 'entry'
-        }
+          useBuiltIns: 'entry',
+        },
       ];
     }
 

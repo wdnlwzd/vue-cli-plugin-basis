@@ -46,6 +46,10 @@ function addDependencies(api, iconFont) {
   })
 }
 
+/**
+ * TODO: replace api.injectImports.
+ * no order
+ */
 function addImports(api, iconFont) {
   try {
     api.injectImports(api.entryFile, `import '${fonts['roboto']['import']}'`);
@@ -59,8 +63,8 @@ function addLinks(api, iconFont) {
   helpers.updateFile(api, './public/index.html', lines => {
     const lastLink = lines.reverse().findIndex(line => line.match(/^\s*<\/head>/));
 
-    lines.splice(lastLink + 1, 0, `    ${fonts['roboto'].link}`);
-    lines.splice(lastLink + 1, 0, `    ${fonts[iconFont].link}`);
+    lines.splice(lastLink + 1, 0, `${fonts['roboto'].link}`);
+    lines.splice(lastLink + 1, 0, `${fonts[iconFont].link}`);
 
     return lines.reverse();
   });
