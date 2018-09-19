@@ -3,7 +3,7 @@ import VueResource from 'vue-resource';
 <%_ if (ui === 'element') { _%>
 import { Message } from 'element-ui';
 <%_ } else if (ui === 'vuetify') { _%>
-
+import Snackbar from '../components/snackbar/index';
 <%_ } _%>
 
 Vue.use(VueResource);
@@ -11,14 +11,15 @@ Vue.use(VueResource);
 function access(url, param, method) {
   /* eslint-disable no-param-reassign */
   param = param || {};
-  if (window.location.search.indexOf('debug') > -1) {
-    param.debug = true;
-  }
+  // if (window.location.search.indexOf('debug') > -1) {
+  //   param.debug = true;
+  // }
 
   let ret = null;
   const upperMethod = method.toUpperCase();
   /* eslint-disable no-underscore-dangle */
   const __randNum = Math.random();
+
   if (upperMethod === 'POST') {
     ret = Vue.http.post(url, param, { params: { __randNum } });
   } else if (upperMethod === 'PUT') {
@@ -30,22 +31,19 @@ function access(url, param, method) {
   }
 
   return ret.then((res) => {
-    // console.log('res', res);
-    // console.log('res.body', res.body);
+    // Note:
+    // When successful, the body data is returned;
+    // when it fails, it returns res,
+    // in order to ensure the same as the return value of the http request error.
     if (res.body.ok) {
       return res.body;
     }
 
-    // 注意：成功时，返回的是body数据；失败时, 返回的是res，为了保证与http请求错误的返回值一致
     return Promise.reject(res);
   }, (res) => {
-    // if (res.status !== 404) {
-    //   Message.error({
-    //     message: res.body,
-    //   });
-    // }
-
+    // FIXME: This is not the best method.
     let errMsg = '';
+
     if (res.status === 401) {
       errMsg = '您无权访问该页面';
     } else if (res.status === 403) {
@@ -59,9 +57,10 @@ function access(url, param, method) {
     <%_ if (ui === 'element') { _%>
     Message.error(errMsg);
     <%_ } else if (ui === 'vuetify') { _%>
-
+    Snackbar.error(errMsg);
     <%_ } _%>
-    // 重新抛出，以便于后面链式处理
+
+    // Throw it again so you can handle it later.
     return Promise.reject(res);
   });
 }
