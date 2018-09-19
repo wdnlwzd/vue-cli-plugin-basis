@@ -12,8 +12,19 @@ function addDependencies(api) {
 
 function updateBabelConfig(api) {
   helpers.updateBabelConfig(api, cfg => {
-    if (cfg.plugins === undefined) {
+    if (!cfg.plugins) {
       cfg.plugins = [];
+    }
+
+    // Prevent duplication
+    for (let i = 0, len = cfg.plugins.length; i < len; i += 1) {
+      const temp = cfg.plugins[i];
+      if (temp[0] === 'transform-imports' && temp[1] && temp[1].vuetify) {
+        const vuetify = temp[1].vuetify;
+        if (vuetify.transform === 'vuetify/es5/components/${member}' && vuetify.preventFullImport) {
+          return cfg;
+        }
+      }
     }
 
     cfg.plugins.push([
