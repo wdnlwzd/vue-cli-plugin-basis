@@ -6,10 +6,18 @@
 
 Currently this is just a beta version.
 
+**If you switch from partial import to full import UI framework,
+You need to rerun the service.**
 
 ### :book: Intro
 
-`ym-basis` plugin to add [element](https://github.com/ElemeFE/element), [vue-hamlet](https://github.com/yimian/vue-hamlet), [vue-i18n](https://github.com/kazupon/vue-i18n) and [moment](https://github.com/moment/moment) to your Vue Project.
+`ym-basis` plugin to add:
+[Element](https://github.com/ElemeFE/element),
+[Vuetify](https://github.com/vuetifyjs/vuetify),
+[Vue Hamlet](https://github.com/yimian/vue-hamlet),
+[Vue I18n](https://github.com/kazupon/vue-i18n),
+[Moment](https://github.com/moment/moment),
+to your Vue Project.
 
 This plugin will provide login and homepage.
 
