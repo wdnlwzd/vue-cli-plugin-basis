@@ -1,3 +1,4 @@
+// https://eslint.org/docs/user-guide/configuring
 module.exports = {
   root: true,
   env: {
@@ -8,8 +9,28 @@ module.exports = {
     '@vue/airbnb',
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 0,
+    'no-debugger': 'off',
+    'no-shadow': 0,
+    'max-len': [
+      'error',
+      {
+        ignoreStrings: true,
+        ignoreRegExpLiterals: true,
+        code: 120,
+      },
+    ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'state',
+          'acc',
+          'e',
+        ],
+      },
+    ],
   },
   parserOptions: {
     parser: 'babel-eslint',
