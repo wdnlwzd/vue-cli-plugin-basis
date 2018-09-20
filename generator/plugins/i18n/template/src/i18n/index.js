@@ -11,7 +11,7 @@ import locales from './locales';
 
 Vue.use(VueI18n);
 
-// 从locales里把各个语言的单独分出来
+// Separate each language from locales
 const getLocale = (lang, lcs) => {
   let locale = {};
 

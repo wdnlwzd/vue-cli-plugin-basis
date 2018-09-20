@@ -12,7 +12,6 @@ function updateBabelConfig(api, callback) {
   } else if (fs.existsSync(pkgPath)) {
     configPath = pkgPath;
     config = JSON.parse(fs.readFileSync(pkgPath, { encoding: 'utf8' }));
-
     if (config.babel) {
       config.babel = callback(config.babel);
     } else {
@@ -22,7 +21,6 @@ function updateBabelConfig(api, callback) {
 
   if (configPath) {
     const moduleExports = configPath !== pkgPath ? 'module.exports = ' : '';
-
     fs.writeFileSync(
       configPath,
       `${moduleExports}${JSON.stringify(config, null, 2)}`,
@@ -45,7 +43,6 @@ function updateEslintrc(api, callback) {
   } else if (fs.existsSync(pkgPath)) {
     configPath = pkgPath;
     config = JSON.parse(fs.readFileSync(pkgPath, { encoding: 'utf8' }));
-
     if (config.babel) {
       config.babel = callback(config.babel);
     } else {
@@ -71,7 +68,6 @@ function updateFile(api, file, callback) {
   let content = fs.existsSync(file) ? fs.readFileSync(file, { encoding: 'utf8' }) : '';
 
   content = callback(content.split(/\r?\n/g)).join('\n');
-
   fs.writeFileSync(file, content, { encoding: 'utf8' });
 }
 

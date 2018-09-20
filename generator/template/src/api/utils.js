@@ -17,6 +17,7 @@ function access(url, param, method) {
 
   let ret = null;
   const upperMethod = method.toUpperCase();
+
   /* eslint-disable no-underscore-dangle */
   const __randNum = Math.random();
 

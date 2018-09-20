@@ -4,6 +4,7 @@ module.exports = (api) => {
   helpers.updateFile(api, api.entryFile, lines => {
     lines.reverse();
     let lastImportIndex = lines.findIndex(line => line.match(/^import/));
+
     lines[lastImportIndex] += `\n`;
     lines[lastImportIndex] += `\nVue.router = router;`;
     lines[lastImportIndex] += `\nVue.store = store;`;
@@ -12,7 +13,6 @@ module.exports = (api) => {
     // prototype
     lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
     lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
-
     lines.reverse().join('\n');
 
     return lines;

@@ -8,12 +8,12 @@ module.exports = {
       '/api/auth': {
         target: authApi,
         changeOrigin: true,
-        pathRewrite: {'/api/auth': '/auth'},
+        pathRewrite: { '/api/auth': '/auth' },
       },
       '/api/common': {
         target: commonApi,
         changeOrigin: true,
-        pathRewrite: {'/api/common': '/api'}
+        pathRewrite: { '/api/common': '/api' }
       },
     },
     host: '0.0.0.0',

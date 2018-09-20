@@ -55,8 +55,8 @@ module.exports = (api, opts) => {
     if (opts.import === 'partial') {
       helpers.updateBabelConfig(api, cfg => {
         const pluginComponent = ['component', {
-          'libraryName': 'element-ui',
-          'styleLibraryName': 'theme-chalk',
+          libraryName: 'element-ui',
+          styleLibraryName: 'theme-chalk',
         }];
 
         cfg.plugins = cfg.plugins || [];

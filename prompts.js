@@ -23,16 +23,16 @@ module.exports = [
     choices: [
       {
         name: 'None',
-        value: 'none'
+        value: 'none',
       },
       {
         name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
-        value: 'element'
+        value: 'element',
       },
       {
         name: 'Vuetify, Material Component Framework for Vue.js 2.0',
-        value: 'vuetify'
-      }
+        value: 'vuetify',
+      },
     ],
     default: 'element',
   },
@@ -43,7 +43,7 @@ module.exports = [
     message: 'How do you want to import Element?',
     choices: [
       { name: 'Fully import', value: 'full' },
-      { name: 'Import on demand', value: 'partial' }
+      { name: 'Import on demand', value: 'partial' },
     ],
     default: 'partial',
   },
@@ -54,7 +54,7 @@ module.exports = [
     message: 'How do you want to import Vuetify?',
     choices: [
       { name: 'Fully import', value: 'full' },
-      { name: 'Import on demand', value: 'partial' }
+      { name: 'Import on demand', value: 'partial' },
     ],
     default: 'partial',
   },
@@ -77,7 +77,7 @@ module.exports = [
         'Font Awesome 5': 'fa',
         'Font Awesome 4': 'fa4',
       }[val];
-    }
+    },
   },
   {
     when: answers => answers.ui === 'vuetify',
@@ -100,7 +100,7 @@ module.exports = [
     choices: [
       { name: 'None', value: 'none' },
       // { name: 'Standard', value: 'standard' },
-      { name: 'VueI18n (with i18n cli plugin)', value: 'vuei18n' }
+      { name: 'VueI18n (with i18n cli plugin)', value: 'vuei18n' },
     ],
     default: 'vuei18n',
   },
