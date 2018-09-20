@@ -1,6 +1,16 @@
-## Vue-CLI 3.x plugin for ym
+## vue-cli-plugin-ym-basis
+Vue-CLI 3.x plugin for ym.
 
 [![npm](https://img.shields.io/npm/v/vue-cli-plugin-ym-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-ym-basis)
+
+### :page_with_curl: Index
+* [:warning: Heads up](#warning-heads-up)
+* [:book: Intro](#book-intro)
+* [:rocket: Getting Started](#rocket-getting-started)
+* [:arrow_down: Install](#arrow_down-install)
+* [:white_check_mark: TODO](#white_check_mark-todo)
+* [:exclamation: Issues](#exclamation-issues)
+* [:copyright: License](#copyright-license)
 
 ### :warning: Heads up
 
