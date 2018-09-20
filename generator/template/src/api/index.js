@@ -12,6 +12,9 @@ const urls = {
   readMe: '/users/me',
   readUser: '/users/<id>',
   readUsers: '/users',
+  createUsers: '/users',
+  updateUsers: '/users/<id>',
+  deleteUsers: '/users/<id>',
 };
 
 Object.keys(urls).map((url) => {
@@ -24,4 +27,7 @@ export default new function API() {
   this.readMe = () => request.get(urls.readMe);
   this.readUser = id => request.get(urls.readUser.replace('<id>', id));
   this.readUsers = () => request.get(urls.readUsers, {});
+  this.createUsers = params => request.post(urls.createUsers, params);
+  this.updateUsers = (id, params) => request.put(urls.updateUsers.replace('<id>', id), params);
+  this.deleteUsers = id => request.delete(urls.deleteUsers.replace('<id>', id));
 }();
