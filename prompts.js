@@ -1,19 +1,19 @@
-const localeList = [
-  'af-ZA', 'ar', 'bg', 'ca', 'cs-CZ',
-  'da', 'de', 'ee', 'el', 'en', 'es',
-  'fa', 'fi', 'fr', 'he', 'hu', 'id',
-  'it', 'ja', 'ko', 'ku', 'kz', 'lt',
-  'lv', 'mn', 'nb-NO', 'nl', 'pl', 'pt-br',
-  'pt', 'ro', 'ru-RU', 'sk', 'sl', 'sv-SE',
-  'ta', 'th', 'tk', 'tr-TR', 'ua', 'ug-CN',
-  'vi', 'zh-CN', 'zh-TW',
-];
+// const localeList = [
+//   'af-ZA', 'ar', 'bg', 'ca', 'cs-CZ',
+//   'da', 'de', 'ee', 'el', 'en', 'es',
+//   'fa', 'fi', 'fr', 'he', 'hu', 'id',
+//   'it', 'ja', 'ko', 'ku', 'kz', 'lt',
+//   'lv', 'mn', 'nb-NO', 'nl', 'pl', 'pt-br',
+//   'pt', 'ro', 'ru-RU', 'sk', 'sl', 'sv-SE',
+//   'ta', 'th', 'tk', 'tr-TR', 'ua', 'ug-CN',
+//   'vi', 'zh-CN', 'zh-TW',
+// ];
 
 module.exports = [
   {
     name: 'hamlet',
     type: 'confirm',
-    message: `Use vue-hamlet ? vue-hamlet is used as authentication for frontend.`,
+    message: 'Use vue-hamlet ? vue-hamlet is used as authentication for frontend.',
     default: true,
   },
   {
@@ -70,7 +70,7 @@ module.exports = [
       'Font Awesome 4',
     ],
     default: 0,
-    filter: function (val) {
+    filter(val) {
       return {
         'Material Icons (default)': 'md',
         'Material Design Icons': 'mdi',
@@ -107,7 +107,7 @@ module.exports = [
   {
     name: 'moment',
     type: 'confirm',
-    message: `Use moment ? Parse, validate, manipulate, and display dates and times in JavaScript.`,
+    message: 'Use moment ? Parse, validate, manipulate, and display dates and times in JavaScript.',
     default: true,
   },
   // {

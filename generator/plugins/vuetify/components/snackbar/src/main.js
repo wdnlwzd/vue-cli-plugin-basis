@@ -4,8 +4,8 @@ import Main from './Main.vue';
 const SnackbarConstructor = Vue.extend(Main);
 
 let instance;
-const instances = [];
 let seed = 1;
+const instances = [];
 
 const Snackbar = (options) => {
   let opts = options || {};
