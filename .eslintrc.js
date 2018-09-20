@@ -1,4 +1,5 @@
 // https://eslint.org/docs/user-guide/configuring
+
 module.exports = {
   root: true,
   env: {
@@ -20,17 +21,49 @@ module.exports = {
         code: 120,
       },
     ],
+    // 'no-param-reassign': [
+    //   'error',
+    //   {
+    //     props: true,
+    //     ignorePropertyModificationsFor: [
+    //       'state',
+    //       'acc',
+    //       'e',
+    //     ],
+    //   },
+    // ],
     'no-param-reassign': [
-      'error',
+      2,
       {
-        props: true,
-        ignorePropertyModificationsFor: [
-          'state',
-          'acc',
-          'e',
-        ],
+        props: false,
       },
     ],
+    // 'no-param-reassign': 0,
+    // 'no-confusing-arrow': [
+    //   2,
+    //   {
+    //     allowParens: false,
+    //   },
+    // ],
+    'no-unused-expressions': [
+      2,
+      {
+       'allowShortCircuit': true,
+      },
+    ],
+    'import/no-unresolved': 'off',
+    'import/no-dynamic-require': 'off',
+
+    // don't require .vue extension when importing
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        vue: 'never',
+      },
+    ],
+    'import/extensions': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',
