@@ -13,7 +13,7 @@ module.exports = {
       '/api/common': {
         target: commonApi,
         changeOrigin: true,
-        pathRewrite: { '/api/common': '/api' }
+        pathRewrite: { '/api/common': '/api' },
       },
     },
     host: '0.0.0.0',
@@ -26,4 +26,5 @@ module.exports = {
   },
   productionSourceMap: false,
   runtimeCompiler: true,
-}
+};
+

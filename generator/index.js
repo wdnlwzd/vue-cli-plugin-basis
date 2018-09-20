@@ -1,8 +1,13 @@
 const updatePremain = require('./pre-main');
 const updateMain = require('./main');
-const updateFiles = require('./utils/files');
+// const updateFiles = require('./utils/files');
 const updateEslintrc = require('./utils/eslintrc');
 const prettier = require('prettier');
+const i18n = require('./plugins/i18n');
+const element = require('./tools/element');
+const vuetify = require('./tools/vuetify');
+const vueHamlet = require('./tools/vue-hamlet');
+const moment = require('./tools/moment');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template', opts);
@@ -18,15 +23,15 @@ module.exports = (api, opts, rootOptions) => {
 
   console.log('options', opts);
   updatePremain(api, opts);
-  if (opts.i18n !== 'none') {
-    require('./plugins/i18n')(api, opts, rootOptions);
+  if (opts.i18 !== 'none') {
+    i18n(api, opts, rootOptions);
   }
 
-  opts.ui === 'element' && require('./tools/element')(api, opts);
-  opts.ui === 'vuetify' && require('./tools/vuetify')(api, opts);
+  opts.ui === 'element' && element(api, opts);
+  opts.ui === 'vuetify' && vuetify(api, opts);
 
-  opts.hamlet && require('./tools/vue-hamlet')(api, opts);
-  opts.moment && require('./tools/moment')(api);
+  opts.hamlet && vueHamlet(api, opts);
+  opts.moment && moment(api);
 
   api.onCreateComplete(() => {
     // update main.js
@@ -37,7 +42,7 @@ module.exports = (api, opts, rootOptions) => {
   });
 
   if (api.invoking) {
-    api.postProcessFiles(files => {
+    api.postProcessFiles((files) => {
       // updateFiles(api, opts, files);
       // console.log('files', Object.keys(files));
 
@@ -55,9 +60,9 @@ module.exports = (api, opts, rootOptions) => {
         'views/About.vue',
         'views/Home.vue',
       ];
-      needDeleteFiles.forEach(name => {
+      needDeleteFiles.forEach((name) => {
         delete files[`src/${name}`];
       });
     });
   }
-}
+};

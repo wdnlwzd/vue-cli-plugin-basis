@@ -1,20 +1,20 @@
 const helpers = require('./utils/helpers');
 
 module.exports = (api) => {
-  helpers.updateFile(api, api.entryFile, lines => {
+  helpers.updateFile(api, api.entryFile, (lines) => {
     lines.reverse();
-    let lastImportIndex = lines.findIndex(line => line.match(/^import/));
+    const lastImportIndex = lines.findIndex(line => line.match(/^import/));
 
-    lines[lastImportIndex] += `\n`;
-    lines[lastImportIndex] += `\nVue.router = router;`;
-    lines[lastImportIndex] += `\nVue.store = store;`;
-    lines[lastImportIndex] += `\n`;
+    lines[lastImportIndex] += '\n';
+    lines[lastImportIndex] += '\nVue.router = router;';
+    lines[lastImportIndex] += '\nVue.store = store;';
+    lines[lastImportIndex] += '\n';
 
     // prototype
-    lines[lastImportIndex] += `\nVue.prototype.$api = API;`;
-    lines[lastImportIndex] += `\nVue.prototype.$consts = consts;`;
+    lines[lastImportIndex] += '\nVue.prototype.$api = API;';
+    lines[lastImportIndex] += '\nVue.prototype.$consts = consts;';
     lines.reverse().join('\n');
 
     return lines;
   });
-}
+};

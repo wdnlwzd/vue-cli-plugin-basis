@@ -1,12 +1,12 @@
 const helpers = require('./helpers');
 
-module.exports = api => {
-  helpers.updateEslintrc(api, cfg => {
+module.exports = (api) => {
+  helpers.updateEslintrc(api, (cfg) => {
     if (!cfg.rules) {
       cfg.rules = {};
     }
 
-    const rules = cfg.rules;
+    const { rules } = cfg;
 
     Object.assign(rules, { 'no-console': 0 });
     Object.assign(rules, { 'no-shadow': 0 });
@@ -30,4 +30,4 @@ module.exports = api => {
 
     return cfg;
   });
-}
+};

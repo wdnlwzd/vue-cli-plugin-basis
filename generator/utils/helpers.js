@@ -1,5 +1,6 @@
-const fs = require('fs')
+const fs = require('fs');
 
+/* eslint-disable global-require */
 function updateBabelConfig(api, callback) {
   let config = null;
   let configPath = null;
@@ -24,8 +25,8 @@ function updateBabelConfig(api, callback) {
     fs.writeFileSync(
       configPath,
       `${moduleExports}${JSON.stringify(config, null, 2)}`,
-      { encoding: 'utf8' }
-    )
+      { encoding: 'utf8' },
+    );
   } else {
     // TODO: handle if babel config doesn't exist
   }
@@ -56,23 +57,23 @@ function updateEslintrc(api, callback) {
     fs.writeFileSync(
       configPath,
       `${moduleExports}${JSON.stringify(config, null, 2)}`,
-      { encoding: 'utf8' }
-    )
+      { encoding: 'utf8' },
+    );
   } else {
     // TODO: handle if babel config doesn't exist
   }
 }
 
 function updateFile(api, file, callback) {
-  file = api.resolve(file);
-  let content = fs.existsSync(file) ? fs.readFileSync(file, { encoding: 'utf8' }) : '';
+  const tempFile = api.resolve(file);
+  let content = fs.existsSync(tempFile) ? fs.readFileSync(tempFile, { encoding: 'utf8' }) : '';
 
   content = callback(content.split(/\r?\n/g)).join('\n');
-  fs.writeFileSync(file, content, { encoding: 'utf8' });
+  fs.writeFileSync(tempFile, content, { encoding: 'utf8' });
 }
 
 module.exports = {
   updateBabelConfig,
   updateEslintrc,
   updateFile,
-}
+};

@@ -13,7 +13,7 @@ function checkExistence(temp) {
  * Finally, you need to rerun the service.
  */
 function removeComponentPlugin(api) {
-  helpers.updateBabelConfig(api, cfg => {
+  helpers.updateBabelConfig(api, (cfg) => {
     if (cfg.plugins) {
       for (let i = 0, len = cfg.plugins.length; i < len; i += 1) {
         if (checkExistence(cfg.plugins[i])) {
@@ -44,7 +44,7 @@ module.exports = (api, opts) => {
     });
   }
 
-  api.injectImports(api.entryFile, `import './plugins/element';`);
+  api.injectImports(api.entryFile, "import './plugins/element';");
   const files = {
     './src/plugins/element.js': '../plugins/element/index.js',
     './element-variables.scss': '../plugins/element/template/element-variables.scss',
@@ -53,7 +53,7 @@ module.exports = (api, opts) => {
   api.render(files, { opts });
   api.onCreateComplete(() => {
     if (opts.import === 'partial') {
-      helpers.updateBabelConfig(api, cfg => {
+      helpers.updateBabelConfig(api, (cfg) => {
         const pluginComponent = ['component', {
           libraryName: 'element-ui',
           styleLibraryName: 'theme-chalk',

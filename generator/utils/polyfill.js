@@ -9,12 +9,12 @@ function addDependencies(api) {
 }
 
 function updateBabelConfig(api) {
-  helpers.updateBabelConfig(api, cfg => {
+  helpers.updateBabelConfig(api, (cfg) => {
     if (!cfg.presets) {
       return cfg;
     }
 
-    const vuePresetIndex = cfg.presets.findIndex(p => Array.isArray(p) ? p[0] === '@vue/app' : p === '@vue/app');
+    const vuePresetIndex = cfg.presets.findIndex(p => (Array.isArray(p) ? p[0] === '@vue/app' : p === '@vue/app'));
     const isArray = Array.isArray(cfg.presets[vuePresetIndex]);
 
     if (vuePresetIndex < 0) {
@@ -22,7 +22,7 @@ function updateBabelConfig(api) {
     }
 
     if (isArray) {
-      cfg.presets[vuePresetIndex][1]['useBuiltIns'] = 'entry';
+      cfg.presets[vuePresetIndex][1].useBuiltIns = 'entry';
     } else {
       cfg.presets[vuePresetIndex] = [
         '@vue/app',
@@ -37,7 +37,7 @@ function updateBabelConfig(api) {
 }
 
 function updateBrowsersList(api) {
-  helpers.updateFile(api, './.browserslistrc', lines => {
+  helpers.updateFile(api, './.browserslistrc', (lines) => {
     if (!lines.length) {
       return [
         '> 1%',
@@ -46,7 +46,8 @@ function updateBrowsersList(api) {
       ];
     }
 
-    const ieLineIndex = lines.findIndex(line => line.match(/^([^\s]*\s+|)ie\s*</))
+    const ieLineIndex = lines.findIndex(line => line.match(/^([^\s]*\s+|)ie\s*</));
+
     if (ieLineIndex === -1) {
       lines.push('not ie <= 10');
     } else {
@@ -58,7 +59,7 @@ function updateBrowsersList(api) {
 }
 
 function addImports(api) {
-  helpers.updateFile(api, api.entryFile, lines => {
+  helpers.updateFile(api, api.entryFile, (lines) => {
     if (!lines.find(l => l.match(/^(import|require).*@babel\/polyfill.*$/))) {
       lines.unshift('import \'@babel/polyfill\';');
     }

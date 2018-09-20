@@ -2,7 +2,7 @@ const helpers = require('../utils/helpers');
 
 function addAbsoluteImports(lines) {
   let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
-  lines.splice(lastImportIndex += 1, 0, `import moment from 'moment';`);
+  lines.splice(lastImportIndex += 1, 0, "import moment from 'moment';");
   return lines;
 }
 
@@ -13,11 +13,13 @@ module.exports = (api) => {
     },
   });
   api.onCreateComplete(() => {
-    helpers.updateFile(api, api.entryFile, lines => {
-      lines = addAbsoluteImports(lines);
+    helpers.updateFile(api, api.entryFile, (lineups) => {
+      const lines = addAbsoluteImports(lineups);
+
       lines.reverse();
-      let lastImportIndex = lines.findIndex(line => line.match(/^import/));
-      lines[lastImportIndex] += `\nVue.prototype.$moment = moment;`;
+      const lastImportIndex = lines.findIndex(line => line.match(/^import/));
+
+      lines[lastImportIndex] += '\nVue.prototype.$moment = moment;';
       lines.reverse().join('\n');
       return lines;
     });

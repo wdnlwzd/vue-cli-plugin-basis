@@ -1,4 +1,5 @@
 const helpers = require('../utils/helpers');
+
 const fonts = {
   md: {
     package: {
@@ -35,15 +36,15 @@ const fonts = {
     import: 'roboto-fontface/css/roboto/roboto-fontface.css',
     link: '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">',
   },
-}
+};
 
 function addDependencies(api, iconFont) {
   api.extendPackage({
     dependencies: {
-      ...fonts['roboto']['package'],
-      ...fonts[iconFont]['package'],
+      ...fonts.roboto.package,
+      ...fonts[iconFont].package,
     },
-  })
+  });
 }
 
 /**
@@ -52,18 +53,18 @@ function addDependencies(api, iconFont) {
  */
 function addImports(api, iconFont) {
   try {
-    api.injectImports(api.entryFile, `import '${fonts['roboto']['import']}'`);
-    api.injectImports(api.entryFile, `import '${fonts[iconFont]['import']}'`);
-  } catch(e) {
+    api.injectImports(api.entryFile, `import '${fonts.roboto.import}'`);
+    api.injectImports(api.entryFile, `import '${fonts[iconFont].import}'`);
+  } catch (e) {
     console.error(e);
   }
 }
 
 function addLinks(api, iconFont) {
-  helpers.updateFile(api, './public/index.html', lines => {
+  helpers.updateFile(api, './public/index.html', (lines) => {
     const lastLink = lines.reverse().findIndex(line => line.match(/^\s*<\/head>/));
 
-    lines.splice(lastLink + 1, 0, `${fonts['roboto'].link}`);
+    lines.splice(lastLink + 1, 0, `${fonts.roboto.link}`);
     lines.splice(lastLink + 1, 0, `${fonts[iconFont].link}`);
 
     return lines.reverse();
@@ -74,4 +75,4 @@ module.exports = {
   addDependencies,
   addImports,
   addLinks,
-}
+};

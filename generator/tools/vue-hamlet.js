@@ -3,12 +3,12 @@ const helpers = require('../utils/helpers');
 function addAbsoluteImports(lines) {
   let lastImportIndex = lines.findIndex(line => line.match(/^import Vue/));
 
-  lines.splice(lastImportIndex += 1, 0, `import auth from 'vue-hamlet';`);
-  lines.splice(lastImportIndex += 1, 0, `import { sync } from 'vuex-router-sync';`);
+  lines.splice(lastImportIndex += 1, 0, "import auth from 'vue-hamlet';");
+  lines.splice(lastImportIndex += 1, 0, "import { sync } from 'vuex-router-sync';");
   return lines;
 }
 
-module.exports = (api, opts) => {
+module.exports = (api) => {
   api.extendPackage({
     dependencies: {
       'vue-hamlet': 'github:yimian/vue-hamlet#v1.0.2',
@@ -16,11 +16,13 @@ module.exports = (api, opts) => {
     },
   });
   api.onCreateComplete(() => {
-    helpers.updateFile(api, api.entryFile, lines => {
-      lines = addAbsoluteImports(lines);
+    helpers.updateFile(api, api.entryFile, (lineups) => {
+      const lines = addAbsoluteImports(lineups);
+
       lines.reverse();
-      let lastImportIndex = lines.findIndex(line => line.match(/^import/));
-      lines[lastImportIndex] += `\n`;
+      const lastImportIndex = lines.findIndex(line => line.match(/^import/));
+
+      lines[lastImportIndex] += '\n';
       lines[lastImportIndex] += `
 // console.log('process.env', process.env);
 Vue.use(auth, {
@@ -32,7 +34,7 @@ Vue.use(auth, {
   // fetchUser: '/api/common/users/me',
 });
 `;
-      lines[lastImportIndex] += `\nsync(store, router);`;
+      lines[lastImportIndex] += '\nsync(store, router);';
       lines.reverse().join('\n');
       return lines;
     });
