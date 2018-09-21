@@ -55,14 +55,14 @@ module.exports = {
     'import/no-dynamic-require': 'off',
 
     // don't require .vue extension when importing
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        js: 'never',
-        vue: 'never',
-      },
-    ],
+    // 'import/extensions': [
+    //   'error',
+    //   'always',
+    //   {
+    //     js: 'never',
+    //     vue: 'never',
+    //   },
+    // ],
     'import/extensions': 0,
   },
   parserOptions: {
