@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-ym-basis",
-  "version": "v0.5.8-beta2",
+  "version": "0.5.8-rc0",
   "description": "Basic plugin for YM",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,10 @@
     "vue-cli-plugin",
     "plugin"
   ],
-  "author": "tianyiming26@gmail.com",
+  "author": {
+    "name": "vasttian",
+    "email": "tianyiming26@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vasttian/vue-cli-plugin-ym-basis/issues"
