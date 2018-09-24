@@ -1,6 +1,6 @@
 {
-  "name": "vue-cli-plugin-ym-basis",
-  "version": "0.5.8-rc0",
+  "name": "vue-cli-plugin-basis",
+  "version": "0.6.0-rc0",
   "description": "Basic plugin for YM",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vasttian/vue-cli-plugin-ym-basis.git"
+    "url": "git+https://github.com/vasttian/vue-cli-plugin-basis.git"
   },
   "keywords": [
     "vue",
@@ -30,9 +30,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vasttian/vue-cli-plugin-ym-basis/issues"
+    "url": "https://github.com/vasttian/vue-cli-plugin-basis/issues"
   },
-  "homepage": "https://github.com/vasttian/vue-cli-plugin-ym-basis#readme",
+  "homepage": "https://github.com/vasttian/vue-cli-plugin-basis#readme",
   "publishConfig": {
     "access": "public"
   },

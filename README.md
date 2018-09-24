@@ -1,7 +1,9 @@
-## vue-cli-plugin-ym-basis
+## vue-cli-plugin-basis
 Vue-CLI 3.x plugin for ym.
 
-[![npm](https://img.shields.io/npm/v/vue-cli-plugin-ym-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-ym-basis)
+Quickly build basic development templates.
+
+[![npm](https://img.shields.io/npm/v/vue-cli-plugin-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-basis)
 
 ### :page_with_curl: Index
 * [:warning: Heads up](#warning-heads-up)
@@ -21,7 +23,7 @@ You need to rerun the service.**
 
 ### :book: Intro
 
-`ym-basis` plugin to add:
+`basis` plugin to add:
 1. [Element](https://github.com/ElemeFE/element),
 2. [Vuetify](https://github.com/vuetifyjs/vuetify),
 3. [Vue Hamlet](https://github.com/yimian/vue-hamlet),
@@ -52,14 +54,14 @@ Create your new project with Vue-CLI 3.x:
 vue create my-app
 ```
 
-Before installing the `ym-basis` plugin, make sure to commit or stash your changes in case you need to revert.
+Before installing the `basis` plugin, make sure to commit or stash your changes in case you need to revert.
 
 Navigate to the newly created project folder,
-Then, to install the ym-basis plugin:
+Then, to install the `basis` plugin:
 
 ```bash
 cd my-app
-vue add ym-basis
+vue add basis
 ```
 
 Finally, serve your project which will be available at http://localhost:8090
@@ -84,7 +86,7 @@ Open http://localhost:8090 to see the demo.
 
 ### :exclamation: Issues
 
-If you run into any issues you can hit us up on [issues](https://github.com/vasttian/vue-cli-plugin-ym-basis/issues)
+If you run into any issues you can hit us up on [issues](https://github.com/vasttian/vue-cli-plugin-basis/issues)
 
 ### :copyright: License
 
