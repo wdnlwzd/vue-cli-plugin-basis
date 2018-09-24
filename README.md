@@ -16,7 +16,7 @@ Quickly build basic development templates.
 
 ### :warning: Heads up
 
-Currently this is just a beta version.
+Currently this is just a **beta version**.
 
 **If you switch from partial import to full import UI framework,
 You need to rerun the service.**
@@ -24,11 +24,11 @@ You need to rerun the service.**
 ### :book: Intro
 
 `basis` plugin to add:
-1. [Element](https://github.com/ElemeFE/element),
-2. [Vuetify](https://github.com/vuetifyjs/vuetify),
-3. [Vue Hamlet](https://github.com/yimian/vue-hamlet),
-4. [Vue I18n](https://github.com/kazupon/vue-i18n),
-5. [Moment](https://github.com/moment/moment),
+1. [Element](https://github.com/ElemeFE/element)
+2. [Vuetify](https://github.com/vuetifyjs/vuetify)
+3. [Vue Hamlet](https://github.com/yimian/vue-hamlet)
+4. [Vue I18n](https://github.com/kazupon/vue-i18n)
+5. [Moment](https://github.com/moment/moment)
 
 to your Vue Project.
 
@@ -72,21 +72,21 @@ Start your app:
 npm run serve
 ```
 
-Open http://localhost:8090 to see the demo.
+:tada: Open http://localhost:8090 to see the demo.
 
 ### :white_check_mark: TODO
 
+- mod: change VueResource to axios.
 - ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
 - add: Remote Presets.
 - mod: styles folder.
-- mod: change VueResource to axios.
 - ......
 - ......
 
 ### :exclamation: Issues
 
-If you run into any issues you can hit us up on [issues](https://github.com/vasttian/vue-cli-plugin-basis/issues)
+If you run into any issues, you can contact me at [issues](https://github.com/vasttian/vue-cli-plugin-basis/issues)
 
 ### :copyright: License
 
