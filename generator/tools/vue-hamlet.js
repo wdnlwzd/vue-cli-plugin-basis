@@ -11,7 +11,7 @@ function addAbsoluteImports(lines) {
 module.exports = (api) => {
   api.extendPackage({
     dependencies: {
-      'vue-hamlet': 'github:yimian/vue-hamlet#v1.0.2',
+      'vue-hamlet': '^1.0.5-rc.1',
       'vuex-router-sync': '^5.0.0',
     },
   });
