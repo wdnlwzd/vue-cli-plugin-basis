@@ -1,9 +1,12 @@
+import Vue from 'vue';
 import axios from 'axios';
 <%_ if (ui === 'element') { _%>
 import { Message } from 'element-ui';
 <%_ } else if (ui === 'vuetify') { _%>
 import Snackbar from '../components/snackbar/index';
 <%_ } _%>
+
+Vue.prototype.$http = axios;
 
 function access(url, param, method) {
   /* eslint-disable no-param-reassign */
