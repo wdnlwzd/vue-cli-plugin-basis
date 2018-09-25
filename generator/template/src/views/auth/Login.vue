@@ -240,7 +240,7 @@ export default {
           this.$router.push({ name: 'Index' });
         }
       }).catch((res) => {
-        console.log('login failed', res);
+        console.error('login failed', res);
         const { data } = res.data;
 
         if (!data) {
@@ -260,7 +260,6 @@ export default {
 
         if (enableLoginLock && (reason !== 'invalid login or password' ||
           (maxAttempts && maxAttempts <= failedCount))) {
-          this.locked = true;
           <%_ if (i18n === 'none') { _%>
           this.$message.error('您的账号已被锁定，请联系管理员！');
           <%_ } else { _%>

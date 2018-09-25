@@ -11,7 +11,7 @@ function addAbsoluteImports(lines) {
 module.exports = (api) => {
   api.extendPackage({
     dependencies: {
-      'vue-hamlet': '^1.0.5-rc.1',
+      'vue-hamlet': '^1.0.5-rc.2',
       'vuex-router-sync': '^5.0.0',
     },
   });
