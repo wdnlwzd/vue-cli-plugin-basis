@@ -1,12 +1,9 @@
-import Vue from 'vue';
-import VueResource from 'vue-resource';
+import axios from 'axios';
 <%_ if (ui === 'element') { _%>
 import { Message } from 'element-ui';
 <%_ } else if (ui === 'vuetify') { _%>
 import Snackbar from '../components/snackbar/index';
 <%_ } _%>
-
-Vue.use(VueResource);
 
 function access(url, param, method) {
   /* eslint-disable no-param-reassign */
@@ -22,13 +19,13 @@ function access(url, param, method) {
   const __randNum = Math.random();
 
   if (upperMethod === 'POST') {
-    ret = Vue.http.post(url, param, { params: { __randNum } });
+    ret = axios.post(url, param, { params: { __randNum } });
   } else if (upperMethod === 'PUT') {
-    ret = Vue.http.put(url, param, { params: { __randNum } });
+    ret = axios.put(url, param, { params: { __randNum } });
   } else if (upperMethod === 'DELETE') {
-    ret = Vue.http.delete(url, { params: { ...param, __randNum } });
+    ret = axios.delete(url, { params: { ...param, __randNum } });
   } else {
-    ret = Vue.http.get(url, { params: { ...param, __randNum } });
+    ret = axios.get(url, { params: { ...param, __randNum } });
   }
 
   return ret.then((res) => {
@@ -36,8 +33,8 @@ function access(url, param, method) {
     // When successful, the body data is returned;
     // when it fails, it returns res,
     // in order to ensure the same as the return value of the http request error.
-    if (res.body.ok) {
-      return res.body;
+    if (res.data.ok) {
+      return res.data;
     }
 
     return Promise.reject(res);

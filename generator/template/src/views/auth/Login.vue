@@ -241,7 +241,7 @@ export default {
         }
       }).catch((res) => {
         console.log('login failed', res);
-        const { data } = res.body;
+        const { data } = res.data;
 
         if (!data) {
           <%_ if (i18n === 'none') { _%>
@@ -252,7 +252,7 @@ export default {
           return;
         }
 
-        const { reason } = res.body;
+        const { reason } = res.data;
         const maxAttempts = data.login_max_attempts;
         const failedCount = data.login_failed_count;
         const enableLoginLock = data.enable_login_lock;

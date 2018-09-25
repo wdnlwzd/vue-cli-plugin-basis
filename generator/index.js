@@ -14,7 +14,7 @@ module.exports = (api, opts, rootOptions) => {
 
   api.extendPackage({
     dependencies: {
-      'vue-resource': '^1.5.1',
+      axios: '^0.18.0',
     },
     devDependencies: {
 
