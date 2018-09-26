@@ -95,13 +95,13 @@ module.exports = [
   {
     name: 'moment',
     type: 'confirm',
-    message: 'Use moment (Parse, validate, manipulate, and display dates and times in JavaScript)?',
+    message: 'Use Moment (Parse, validate, manipulate, and display dates and times in JavaScript)?',
     default: true,
   },
   {
     name: 'echarts',
     type: 'confirm',
-    message: 'Use echarts (A powerful, interactive charting and visualization library for browser)?',
+    message: 'Use Echarts (A powerful, interactive charting and visualization library for browser)?',
   },
   // {
   //   when: answers => answers.i18n === 'vuei18n',
