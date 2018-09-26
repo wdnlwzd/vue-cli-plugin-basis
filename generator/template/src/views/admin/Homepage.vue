@@ -49,32 +49,40 @@
         </el-menu-item>
       </el-menu>
     </div>
-    <%_ } else { _%>
-    <v-layout justify-center align-center>
-      <v-tooltip right>
-        <v-btn
-          icon
-          large
-          :href="source"
-          target="_blank"
-          slot="activator"
-        >
-          <v-icon large>code</v-icon>
-        </v-btn>
-        <span>Source</span>
-      </v-tooltip>
-    </v-layout>
-    <%_ } _%>
     <%_ if (echarts) { _%>
     <div style="float:left;">
       <v-chart :options="chartOption"></v-chart>
     </div>
+    <%_ } _%>
+    <%_ } else { _%>
+    <v-layout justify-center align-center column>
+      <v-flex>
+        <v-tooltip right>
+          <v-btn
+            icon
+            large
+            :href="source"
+            target="_blank"
+            slot="activator"
+          >
+            <v-icon large>code</v-icon>
+          </v-btn>
+          <span>Source</span>
+        </v-tooltip>
+      </v-flex>
+      <%_ if (echarts) { _%>
+      <v-flex>
+        <v-chart :options="chartOption"></v-chart>
+      </v-flex>
+      <%_ } _%>
+    </v-layout>
     <%_ } _%>
   </div>
 </template>
 
 <script>
 <%_ if (echarts) { _%>
+/* eslint-disable import/no-extraneous-dependencies */
 import echarts from 'echarts/lib/echarts';
 
 <%_ } _%>
