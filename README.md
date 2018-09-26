@@ -76,7 +76,7 @@ npm run serve
 
 ### :white_check_mark: TODO
 
-- mod: change VueResource to axios.
+- :heavy_check_mark: mod: change VueResource to axios.
 - ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
 - add: Remote Presets.
