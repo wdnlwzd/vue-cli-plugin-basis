@@ -15,15 +15,16 @@
   "keywords": [
     "vue",
     "cli",
+    "plugin",
+    "basis",
+    "vue-cli",
+    "vue-cli-plugin",
+    "vue-cli-plugin-basis",
+    "vue-basis",
+    "vue-cli 3.x",
     "yimian",
     "ym",
-    "basis",
-    "ym-basis",
-    "vue-basis",
-    "vue-cli",
-    "vue-cli 3.x",
-    "vue-cli-plugin",
-    "plugin"
+    "ym-basis"
   ],
   "author": {
     "name": "vasttian",
