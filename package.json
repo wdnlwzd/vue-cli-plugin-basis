@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-basis",
-  "version": "0.7.0-beta.1",
+  "version": "0.7.1-beta.0",
   "description": "Basic plugin for YM",
   "main": "index.js",
   "scripts": {
@@ -15,14 +15,16 @@
   "keywords": [
     "vue",
     "cli",
-    "ym",
+    "plugin",
     "basis",
-    "ym-basis",
-    "vue-basis",
     "vue-cli",
-    "vue-cli 3.x",
     "vue-cli-plugin",
-    "plugin"
+    "vue-cli-plugin-basis",
+    "vue-basis",
+    "vue-cli 3.x",
+    "yimian",
+    "ym",
+    "ym-basis"
   ],
   "author": {
     "name": "vasttian",

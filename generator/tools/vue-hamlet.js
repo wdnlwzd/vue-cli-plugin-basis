@@ -5,6 +5,7 @@ function addAbsoluteImports(lines) {
 
   lines.splice(lastImportIndex += 1, 0, "import auth from 'vue-hamlet';");
   lines.splice(lastImportIndex += 1, 0, "import { sync } from 'vuex-router-sync';");
+
   return lines;
 }
 

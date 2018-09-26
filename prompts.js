@@ -42,7 +42,7 @@ module.exports = [
     message: answers => `How do you want to import ${answers.ui.charAt(0).toUpperCase() + answers.ui.slice(1)}?`,
     choices: [
       { name: 'Fully import', value: 'full' },
-      { name: 'Import on demand', value: 'partial' }
+      { name: 'Import on demand', value: 'partial' },
     ],
     default: 'partial',
   },
@@ -95,14 +95,14 @@ module.exports = [
   {
     name: 'moment',
     type: 'confirm',
-    message: 'Use moment (Parse, validate, manipulate, and display dates and times in JavaScript)?',
+    message: 'Use Moment (Parse, validate, manipulate, and display dates and times in JavaScript)?',
     default: true,
   },
-  // {
-  //   name: 'echarts',
-  //   type: 'confirm',
-  //   message: 'Use echarts (A powerful, interactive charting and visualization library for browser)?'
-  // },
+  {
+    name: 'echarts',
+    type: 'confirm',
+    message: 'Use Echarts (A powerful, interactive charting and visualization library for browser)?',
+  },
   // {
   //   when: answers => answers.i18n === 'vuei18n',
   //   name: 'vuei18nLocales',

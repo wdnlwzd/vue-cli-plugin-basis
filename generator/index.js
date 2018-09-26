@@ -8,6 +8,7 @@ const element = require('./tools/element');
 const vuetify = require('./tools/vuetify');
 const vueHamlet = require('./tools/vue-hamlet');
 const moment = require('./tools/moment');
+const vueEcharts = require('./tools/vue-echarts');
 
 module.exports = (api, opts, rootOptions) => {
   api.render('./template', opts);
@@ -32,6 +33,7 @@ module.exports = (api, opts, rootOptions) => {
 
   opts.hamlet && vueHamlet(api, opts);
   opts.moment && moment(api);
+  opts.echarts && vueEcharts(api, opts);
 
   api.onCreateComplete(() => {
     // update main.js
