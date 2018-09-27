@@ -61,8 +61,14 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>
+              <%_ if (i18n === 'none') { _%>
+              修改密码
+              <%_ } else { _%>
+              {{ $t('common.account') }}
+              <%_ } _%>
+            </el-dropdown-item>
             <el-dropdown-item @click.native="logout">
-              <i class="icon-switch"></i>
               <%_ if (i18n === 'none') { _%>
               退出登录
               <%_ } else { _%>
@@ -312,7 +318,7 @@ export default {
       }
 
       const { auth } = route.meta;
-      return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
+      return auth ? (!auth.length && !this.user.role) || auth.indexOf(this.user.role) !== -1 : !auth;
     },
     <%_ if (i18n !== 'none') { _%>
     switchLang(lang = 'zh-CN') {

@@ -120,13 +120,13 @@ export default {
       en: 'Password reset successfully!',
       zh: '密码已重置',
     },
+    notBindApp: {
+      en: 'not bind to current app',
+      zh: '对不起，您还没有获得权限，请联系管理员',
+    },
     networkError: {
       en: 'Network Error',
       zh: '网络错误',
-    },
-    downloadPicturesAdata: {
-      en: 'Download pictures and data',
-      zh: '下载图片和数据',
     },
     copyrightMessage: {
       en: '© 2014 - {currentYear} Shenzhen Yimian Network Technology Co.,Ltd.',
