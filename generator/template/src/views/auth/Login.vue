@@ -211,8 +211,8 @@ export default {
     return {
       currentYear: (new Date()).getFullYear(),
       form: {
-        username: '',
-        password: '',
+        username: 'general-demo',
+        password: 'Ymdata123',
       },
       loginLoading: false,
       <%_ if (i18n !== 'none') { _%>
