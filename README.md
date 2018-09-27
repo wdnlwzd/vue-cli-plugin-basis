@@ -24,11 +24,12 @@ You need to rerun the service.**
 ### :book: Intro
 
 `basis` plugin to add:
-1. [Element](https://github.com/ElemeFE/element)
-2. [Vuetify](https://github.com/vuetifyjs/vuetify)
-3. [Vue Hamlet](https://github.com/yimian/vue-hamlet)
-4. [Vue I18n](https://github.com/kazupon/vue-i18n)
-5. [Moment](https://github.com/moment/moment)
+1. [Element](https://github.com/ElemeFE/element)  :heavy_check_mark:
+2. [Vuetify](https://github.com/vuetifyjs/vuetify) :heavy_check_mark:
+3. [Vue Hamlet](https://github.com/yimian/vue-hamlet)  :heavy_check_mark:
+4. [Vue I18n](https://github.com/kazupon/vue-i18n)  :heavy_check_mark:
+5. [Moment](https://github.com/moment/moment)  :heavy_check_mark:
+6. [Vue-ECharts](https://github.com/ecomfe/vue-echarts)  :heavy_check_mark:
 
 to your Vue Project.
 
@@ -75,15 +76,19 @@ npm run serve
 :tada: Open http://localhost:8090 to see the demo.
 
 ### :white_check_mark: TODO
-
-- :heavy_check_mark: mod: Change VueResource to axios.
-- ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
-- :heavy_check_mark: add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts)
-- add: query locale.
-- add: Remote Presets.
-- mod: Styles folder.
-- ......
-- ......
+- [x] add: `Element`.
+- [x] add: `Vuetify`.
+- [x] add: `Vue Hamlet`.
+- [x] add: `Vue I18n`.
+- [x] add: `Moment`.
+- [x] mod: Change `Vue Resource` to `Axios`.
+- [ ] ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
+- [x] add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts).
+- [ ] add: Query locale.
+- [ ] add: Remote Presets.
+- [ ] mod: Styles folder.
+- [ ] ......
+- [ ] ......
 
 ### :exclamation: Issues
 
