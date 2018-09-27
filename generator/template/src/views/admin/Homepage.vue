@@ -6,7 +6,7 @@
       <h3>Start your creation as much as you can.</h3>
     </div>
     <%_ if (ui === 'element') { _%>
-    <div style="width:300px; float:left;">
+    <div style="float:left;">
       <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true">收起</el-radio-button>
@@ -17,7 +17,9 @@
         @open="handleOpen"
         @close="handleClose"
         :collapse="isCollapse">
-        <el-submenu index="1">
+        <el-submenu
+          index="1"
+          :style="{width: isCollapse ? '60px' : '199px'}">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span slot="title">导航一</span>
@@ -50,7 +52,7 @@
       </el-menu>
     </div>
     <%_ if (echarts) { _%>
-    <div style="float:left;">
+    <div style="margin-left:100px; float:left;">
       <v-chart :options="chartOption"></v-chart>
     </div>
     <%_ } _%>
