@@ -17,7 +17,9 @@ module.exports = {
       'error',
       {
         ignoreStrings: true,
+        ignoreUrls: true,
         ignoreRegExpLiterals: true,
+        ignoreTemplateLiterals: true,
         code: 120,
       },
     ],

@@ -13,7 +13,9 @@ module.exports = (api) => {
     Object.assign(rules, {
       'max-len': ['error', {
         ignoreStrings: true,
+        ignoreUrls: true,
         ignoreRegExpLiterals: true,
+        ignoreTemplateLiterals: true,
         code: 120,
       }],
     });
