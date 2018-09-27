@@ -312,7 +312,7 @@ export default {
       }
 
       const { auth } = route.meta;
-      return auth ? auth.indexOf(this.user.role) !== -1 : !auth;
+      return auth ? (!auth.length && !this.user.role) || auth.indexOf(this.user.role) !== -1 : !auth;
     },
     <%_ if (i18n !== 'none') { _%>
     switchLang(lang = 'zh-CN') {

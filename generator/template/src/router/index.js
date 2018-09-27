@@ -49,6 +49,7 @@ export default new Router({
           meta: {
             icon: 'home',
             hidden: false,
+            auth: [],
           },
         },
         {
@@ -59,6 +60,7 @@ export default new Router({
           },
           meta: {
             icon: 'people_outline',
+            auth: [],
           },
         },
         {
@@ -75,6 +77,7 @@ export default new Router({
               component: Create,
               meta: {
                 icon: 'add',
+                auth: [],
               },
             },
             {
@@ -83,6 +86,7 @@ export default new Router({
               component: Read,
               meta: {
                 icon: 'insert_drive_file',
+                auth: [],
               },
             },
             {
@@ -91,6 +95,7 @@ export default new Router({
               component: Update,
               meta: {
                 icon: 'update',
+                auth: [],
               },
             },
             {
@@ -99,6 +104,7 @@ export default new Router({
               component: Delete,
               meta: {
                 icon: 'delete',
+                auth: [],
               },
             },
           ],
