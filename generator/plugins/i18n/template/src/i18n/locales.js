@@ -122,7 +122,7 @@ export default {
     },
     notBindApp: {
       en: 'not bind to current app',
-      zh: '对不起，你还没有获得权限，请联系管理员',
+      zh: '对不起，您还没有获得权限，请联系管理员',
     },
     networkError: {
       en: 'Network Error',

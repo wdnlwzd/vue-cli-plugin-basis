@@ -235,9 +235,9 @@ export default {
       this.loginLoading = true;
       this.$auth.login(this.form).then(() => {
         try {
-          this.$router.push({ path: 'Index' });
-        } catch (err) {
           this.$router.push({ name: 'Index' });
+        } catch (err) {
+          this.$router.push({ path: '/' });
         }
       }).catch((res) => {
         console.error('login failed', res);
@@ -247,7 +247,7 @@ export default {
         if (!data || isEmptyObject(data)) {
           <%_ if (i18n === 'none') { _%>
           this.$message.error(this.$t(reason === 'not bind to current app' ?
-          '对不起，你还没有获得权限，请联系管理员' : '用户名或密码错误！'));
+          '对不起，您还没有获得权限，请联系管理员' : '用户名或密码错误！'));
           <%_ } else { _%>
           this.$message.error(this.$t(reason === 'not bind to current app' ?
             'common.notBindApp' : 'common.invalid_password_username'));
