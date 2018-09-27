@@ -204,7 +204,7 @@
 </template>
 
 <script>
-import { isMobile } from '@/utils/util';
+import { isMobile, isEmptyObject } from '@/utils/util';
 
 export default {
   data() {
@@ -242,17 +242,18 @@ export default {
       }).catch((res) => {
         console.error('login failed', res);
         const { data } = res.data;
+        const { reason } = res.data;
 
-        if (!data) {
+        if (!data || isEmptyObject(data)) {
           <%_ if (i18n === 'none') { _%>
-          this.$message.error('用户名或密码错误！');
+          return this.$message.error(this.$t(reason === 'not bind to current app' ?
+          '对不起，你还没有获得权限，请联系管理员' : '用户名或密码错误！'));
           <%_ } else { _%>
-          this.$message.error(this.$t('common.invalid_password_username'));
+          return this.$message.error(this.$t(reason === 'not bind to current app' ?
+            'common.notBindApp' : 'common.invalid_password_username'));
           <%_ } _%>
-          return;
         }
 
-        const { reason } = res.data;
         const maxAttempts = data.login_max_attempts;
         const failedCount = data.login_failed_count;
         const enableLoginLock = data.enable_login_lock;
