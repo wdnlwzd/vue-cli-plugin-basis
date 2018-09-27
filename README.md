@@ -1,3 +1,6 @@
+# *This package has been deprecated*
+> ## This project has been renamed to `vue-cli-plugin-basis`. Install using [vue-cli-plugin-basis](https://www.npmjs.com/package/vue-cli-plugin-basis) instead.
+
 ## vue-cli-plugin-ym-basis
 Vue-CLI 3.x plugin for ym.
 
