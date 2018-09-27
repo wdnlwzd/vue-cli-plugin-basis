@@ -21,10 +21,10 @@ module.exports = [
     type: 'list',
     message: 'Confirm your UI framework',
     choices: [
-      {
-        name: 'None',
-        value: 'none',
-      },
+      // {
+      //   name: 'None',
+      //   value: 'none',
+      // },
       {
         name: 'Element, a Vue 2.0 based component library for developers, designers and product managers',
         value: 'element',
