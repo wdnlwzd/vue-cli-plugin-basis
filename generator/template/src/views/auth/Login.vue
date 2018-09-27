@@ -312,7 +312,7 @@ export default {
     redirectForgotPassword() {
       <%_ if (hamlet) { _%>
       /* eslint-disable max-len */
-      window.location = `${process.env.VUE_APP_HAMLET_URL}/forgot_password?app_key=${process.env.VUE_APP_APP_KEY}&callback_url=${document.location.href}`;
+      window.open(`${process.env.VUE_APP_HAMLET_URL}/forgot_password?app_key=${process.env.VUE_APP_APP_KEY}&callback_url=${document.location.href}`);
       <%_ } else {_%>
       console.log('redirectForgotPassword');
       <%_ if (ui === 'element') { _%>
