@@ -26,9 +26,8 @@ const getLocale = (lang, lcs) => {
   return locale;
 };
 
-
 const enLocale = Object.assign({}, getLocale('en', locales), enLang);
-const zhLocale = Object.assign({}, getLocale('zh', locales), zhLang);
+const zhLocale = Object.assign({}, getLocale('zh-CN', locales), zhLang);
 const messages = {
   en: enLocale,
   'zh-CN': zhLocale,
