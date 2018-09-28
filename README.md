@@ -84,7 +84,7 @@ npm run serve
 - [x] mod: Change `Vue Resource` to `Axios`.
 - [ ] ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - [x] add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts).
-- [ ] add: Query locale.
+- [x] add: Query locale.
 - [ ] add: Remote Presets.
 - [ ] mod: Styles folder.
 - [ ] ......
