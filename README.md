@@ -51,6 +51,14 @@ first follow the install instructions here: https://github.com/vuejs/vue-cli
 
 Create your new project with Vue-CLI 3.x:
 
+**Tip**: suggest you use the matching preset
+
+```bash
+vue create --preset vasttian/vue-cli-plugin-basis my-app
+```
+
+or
+
 ```bash
 vue create my-app
 ```
@@ -85,7 +93,7 @@ npm run serve
 - [ ] ~~add: [ECharts](https://github.com/apache/incubator-echarts)~~
 - [x] add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts).
 - [x] add: Query locale.
-- [ ] add: Remote Presets.
+- [x] add: Remote Presets.
 - [ ] mod: Styles folder.
 - [ ] ......
 - [ ] ......
