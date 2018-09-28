@@ -2,8 +2,10 @@ const helpers = require('../../utils/helpers');
 
 function addLocale(api, rootOptions, lines, lastImportIndex) {
   lines[lastImportIndex] += '\n';
-  lines[lastImportIndex] +=
-    `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE') || 'zh-CN';`;
+  lines[lastImportIndex] += '\nconst userLocale = navigator.language || navigator.userLanguage;';
+  lines[lastImportIndex] += "\nconst supportedLangs = ['zh-CN', 'en'];";
+  lines[lastImportIndex] += `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE'') ||
+  (supportedLangs.includes(userLocale) ? userLocale : 'zh-CN');`;
   return lines;
 }
 
