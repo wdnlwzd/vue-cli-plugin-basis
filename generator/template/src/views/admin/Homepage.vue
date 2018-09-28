@@ -65,8 +65,7 @@
             large
             :href="source"
             target="_blank"
-            slot="activator"
-          >
+            slot="activator">
             <v-icon large>code</v-icon>
           </v-btn>
           <span>Source</span>
@@ -89,6 +88,7 @@ import echarts from 'echarts/lib/echarts';
 
 <%_ } _%>
 export default {
+  name: 'Homepage',
   data() {
     return {
       isCollapse: true,

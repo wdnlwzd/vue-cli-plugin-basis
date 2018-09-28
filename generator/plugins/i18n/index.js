@@ -2,10 +2,27 @@ const helpers = require('../../utils/helpers');
 
 function addLocale(api, rootOptions, lines, lastImportIndex) {
   lines[lastImportIndex] += '\n';
-  lines[lastImportIndex] += '\nconst userLocale = navigator.language || navigator.userLanguage;';
-  lines[lastImportIndex] += "\nconst supportedLangs = ['zh-CN', 'en'];";
-  lines[lastImportIndex] += `\ni18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}_LANGUAGE'') ||
-  (supportedLangs.includes(userLocale) ? userLocale : 'zh-CN');`;
+  lines[lastImportIndex] += `
+const supportedLangs = ['zh-CN', 'en'];
+const userLocale = navigator.language || navigator.userLanguage;
+
+Vue.router.beforeEach((to, from, next) => {
+  const { locale } = to.query;
+
+  if (locale) {
+    /* eslint-disable no-param-reassign */
+    delete to.query.locale;
+    if (supportedLangs.includes(locale)) {
+      i18n.locale = locale;
+      localStorage.setItem('${rootOptions.projectName.toUpperCase()}', locale);
+    }
+  }
+
+  next();
+});
+i18n.locale = localStorage.getItem('${rootOptions.projectName.toUpperCase()}') ||
+  supportedLangs.includes(userLocale) ? userLocale : 'zh-CN';`;
+
   return lines;
 }
 
