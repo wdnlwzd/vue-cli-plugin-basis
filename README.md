@@ -3,7 +3,19 @@ Vue-CLI 3.x plugin for ym.
 
 Quickly build basic development templates.
 
-[![npm](https://img.shields.io/npm/v/vue-cli-plugin-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-basis)
+<p align="center>
+  <a href="https://github.com/vasttian/vue-cli-plugin-basis/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/v/vue-cli-plugin-basis.svg" alt="NPM">
+  </a>
+  <a href="https://github.com/vasttian/vue-cli-plugin-basis/releases">
+    <img src="https://img.shields.io/github/release/vasttian/vue-cli-plugin-basis.svg" alt="RELEASE">
+  </a>
+  <a href="https://github.com/vasttian/vue-cli-plugin-basis/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="LICENSE">
+  </a>
+</p>
+
+<!-- [![npm](https://img.shields.io/npm/v/vue-cli-plugin-basis.svg)](https://www.npmjs.com/package/vue-cli-plugin-basis) -->
 
 ### :page_with_curl: Index
 * [:warning: Heads up](#warning-heads-up)
