@@ -1,15 +1,36 @@
 import Vue from 'vue';
-import axios from 'axios';
+import Axios from 'axios';
 <%_ if (ui === 'element') { _%>
 import { Message } from 'element-ui';
 <%_ } else if (ui === 'vuetify') { _%>
 import Snackbar from '../components/snackbar/index';
 <%_ } _%>
 
-Vue.prototype.$http = axios;
+Vue.prototype.$http = Axios;
+
+const service = Vue.prototype.$http.create({
+  headers: {
+    'content-type': Vue.prototype.contentType || 'application/json;charset=utf-8',
+  },
+});
+
+/* eslint-disable no-param-reassign */
+service.interceptors.request.use((request) => {
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    request.headers.Authorization = `${Vue.prototype.authType || 'Bearer'} ${token}`;
+  }
+
+  return request;
+});
+
+service.interceptors.response.use(response => response, (error) => {
+  console.log('http error', error);
+  return Promise.reject(error.status ? error : error.response);
+});
 
 function access(url, param, method) {
-  /* eslint-disable no-param-reassign */
   param = param || {};
   // if (window.location.search.indexOf('debug') > -1) {
   //   param.debug = true;
@@ -22,13 +43,13 @@ function access(url, param, method) {
   const __randNum = Math.random();
 
   if (upperMethod === 'POST') {
-    ret = axios.post(url, param, { params: { __randNum } });
+    ret = service.post(url, param, { params: { __randNum } });
   } else if (upperMethod === 'PUT') {
-    ret = axios.put(url, param, { params: { __randNum } });
+    ret = service.put(url, param, { params: { __randNum } });
   } else if (upperMethod === 'DELETE') {
-    ret = axios.delete(url, { params: { ...param, __randNum } });
+    ret = service.delete(url, { params: { ...param, __randNum } });
   } else {
-    ret = axios.get(url, { params: { ...param, __randNum } });
+    ret = service.get(url, { params: { ...param, __randNum } });
   }
 
   return ret.then((res) => {
@@ -55,11 +76,13 @@ function access(url, param, method) {
       errMsg = '服务器出了一点问题，请联系管理员';
     }
 
-    <%_ if (ui === 'element') { _%>
-    Message.error(errMsg);
-    <%_ } else if (ui === 'vuetify') { _%>
-    Snackbar.error(errMsg);
-    <%_ } _%>
+    if (errMsg) {
+      <%_ if (ui === 'element') { _%>
+      Message.error(errMsg);
+      <%_ } else if (ui === 'vuetify') { _%>
+      Snackbar.error(errMsg);
+      <%_ } _%>
+    }
 
     // Throw it again so you can handle it later.
     return Promise.reject(res);
