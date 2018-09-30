@@ -204,7 +204,7 @@
 </template>
 
 <script>
-import { isMobile, isEmptyObject } from '@/utils/util';
+import { isMobile<% if (hamlet) { %>, isEmptyObject<% } %> } from '@/utils/util';
 
 export default {
   data() {
