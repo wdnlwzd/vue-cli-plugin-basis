@@ -106,7 +106,7 @@ npm run serve
 - [x] add: [Vue-ECharts](https://github.com/ecomfe/vue-echarts).
 - [x] add: Query locale.
 - [x] add: Remote Presets.
-- [ ] mod: API process.
+- [x] mod: API process.
 - [ ] refactor: project structure.
 - [ ] mod: Styles folder.
 - [ ] ......
