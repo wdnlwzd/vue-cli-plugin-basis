@@ -21,7 +21,7 @@
         router>
         <template v-for="(route, index) in $router.options.routes[1].children">
           <template
-            v-if="route.meta.hasSub">
+            v-if="route.meta && route.meta.hasSub">
             <el-submenu
               v-if="roleShow(route)"
               :index="route.name"
@@ -116,7 +116,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-for="(route, index) in $router.options.routes[1].children">
-          <template v-if="route.meta.hasSub">
+          <template v-if="route.meta && route.meta.hasSub">
             <v-menu
               :key="index"
               bottom
@@ -313,7 +313,7 @@ export default {
   methods: {
     roleShow(route) {
       // hack, there is no user when logout
-      if (!this.user || route.meta.hidden) {
+      if (!this.user || (route.meta && route.meta.hidden)) {
         return false;
       }
 
